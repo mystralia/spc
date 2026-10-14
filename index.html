@@ -742,7 +742,7 @@ function snapshotOf(d){ const s={profiles:{},weighins:{},badges:new Set(),pronos
   for(const key of Object.keys(d.comments||{})) for(const c of d.comments[key]) s.comments[c.id]=JSON.stringify(Object.assign({key},c));
   s.claims={}; for(const c of (d.claims||[])) s.claims[c.id]=JSON.stringify(claimRow(c));
   s.reglages=JSON.stringify({pesee:d.pesee,season:d.season,palmares:d.palmares}); return s; }
-const APP_VERSION='20261014223651';
+const APP_VERSION='20261014224809';
 function versionCheck(){ if(!/github\.io$/.test(location.hostname)) return; fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(j=>{ if(j&&j.v&&j.v!==APP_VERSION){
   // on ne recharge qu'une fois par version annoncée : si le serveur sert encore l'ancienne page (cache), pas de boucle de rechargements
   let tried=null; try{ tried=sessionStorage.getItem('spc-reload-for'); }catch(_){}
@@ -938,12 +938,12 @@ function attrs(p, wi){
   // Niveau = état physique (gras et muscle), pas seulement la note
   const ORDER=['bronze','argent','or','diamant','legende'];
   const v=wi.visc==null?99:wi.visc;
-  const earned=!tanita?'bronze':(overall>=85&&wi.gras<=10&&ffmi>=22&&v<=3)?'legende':(overall>=80&&wi.gras<=12&&ffmi>=21&&v<=5)?'diamant':(overall>=65&&wi.gras<=15&&ffmi>=20&&v<=9)?'or':(wi.gras<=18&&ffmi>=19&&v<=12)?'argent':'bronze';
+  const earned=!tanita?'bronze':(overall>=85&&wi.gras<=10&&ffmi>=22&&v<=2)?'legende':(overall>=80&&wi.gras<=12&&ffmi>=21&&v<=4)?'diamant':(overall>=65&&wi.gras<=15&&ffmi>=20&&v<=7)?'or':(wi.gras<=20)?'argent':'bronze'; // Argent = plus gros (gras 20 % max) ; la viscérale ne compte qu'à partir d'Or
   // Un mois sans pesée : la carte descend d'un grade jusqu'à la prochaine pesée
   const lastMonth=months[months.length-1], prevMonth=addMonths(currentMonth(),-1);
   const lapsed=lastMonth<prevMonth;
   const tier=lapsed?ORDER[Math.max(0,ORDER.indexOf(earned)-1)]:earned;
-  const nextTier=earned==='legende'?null:earned==='diamant'?{label:'Légende',cond:'note 85, gras 10 % max, indice musculaire 22 min, viscérale 3 max'}:earned==='or'?{label:'Diamant',cond:'note 80, gras 12 % max, indice musculaire 21 min, viscérale 5 max'}:earned==='argent'?{label:'Or',cond:'note 65, gras 15 % max, indice musculaire 20 min, viscérale 9 max'}:{label:'Argent',cond:'gras 18 % max, indice musculaire 19 min, viscérale 12 max'};
+  const nextTier=earned==='legende'?null:earned==='diamant'?{label:'Légende',cond:'note 85, gras 10 % max, indice musculaire 22 min, viscérale 2 max'}:earned==='or'?{label:'Diamant',cond:'note 80, gras 12 % max, indice musculaire 21 min, viscérale 4 max'}:earned==='argent'?{label:'Or',cond:'note 65, gras 15 % max, indice musculaire 20 min, viscérale 7 max'}:{label:'Argent',cond:'gras 20 % max'};
   return {PUI,SEC,MOT,SYM,SAN,REG,overall,tier,earned,lapsed,nextTier,ffmi,tanita,imc:wi.poids/(h*h),list:[PUI,SEC,MOT,SYM,SAN,REG]};
 }
 const fatKg=(wi)=>wi.gras==null?null:wi.poids*wi.gras/100;
@@ -1138,7 +1138,7 @@ function badgesOfRaw(p){
     {id:'streak3',rar:'rare',name:'3 mois d’affilée',desc:'Trois pesées mensuelles sans en rater',icon:'calendar',color:'#5DA9FF',ok:streak>=3,reward:'Contour Brossé · motif Quadrillage · titre Assidu'},
     {id:'nokfc3',rar:'rare',name:'Trois mois propres',desc:'Trois pesées sans jamais recevoir le KFC',icon:'flame',color:'#6BCB77',ok:l.length>=3&&tw.kfc===0,reward:'Titre Propre · contour Vert billard · cadre Anneau vert'},
     {id:'fatstreak3',rar:'rare',name:'En série',desc:'Trois mois de suite avec du gras en moins',icon:'flame',color:'#FF9F43',ok:fatStreak>=3,reward:'Titre En série · contour Rouge course · thème Forêt'},
-    {id:'argent',rar:'rare',temp:true,name:'Carte Argent',desc:'Gras 18 % max, indice musculaire 19, viscérale 12 max',icon:'card',color:'#B9BEC4',ok:tr>=1,reward:'Contour et cadre Argent (tant que tu tiens le grade)'},
+    {id:'argent',rar:'rare',temp:true,name:'Carte Argent',desc:'Gras 20 % max',icon:'card',color:'#B9BEC4',ok:tr>=1,reward:'Contour et cadre Argent (tant que tu tiens le grade)'},
     {id:'title5',rar:'rare',name:'Collectionneur',desc:'Remporter cinq titres mensuels en tout',icon:'medal',color:'#6BCB77',ok:Object.values(titlesWon(p.id)).reduce((x,y)=>x+y,0)>=5,reward:'Titre Multi-titré · cadre Lauriers'},
     {id:'equ',rar:'rare',name:'Bien proportionné',desc:'Équilibre à 90 ou plus',icon:'sym',color:'#4ECDC4',ok:!!a&&a.SYM!=null&&a.SYM>=90,reward:'Titre Équilibré · thème Nuit bleue'},
     // ---- DIFFICILE · épique : cadres et motifs (animés)
@@ -1153,15 +1153,15 @@ function badgesOfRaw(p){
     {id:'streak6',rar:'epique',name:'6 mois d’affilée',desc:'Six pesées mensuelles sans en rater',icon:'calendar',color:'#5DA9FF',ok:streak>=6,reward:'Motif Nid d’abeille · contour Chrome · titre Inoxydable'},
     {id:'goalall3',rar:'epique',name:'Chirurgical',desc:'Tous ses objectifs atteints trois pesées de suite (5 minimum)',icon:'target',color:'#6BCB77',ok:goalAllStreak>=3,reward:'Cadre Mire'},
     {id:'nokfc',rar:'epique',name:'Jamais de KFC',desc:'Six pesées sans jamais recevoir le KFC',icon:'flame',color:'#6BCB77',ok:l.length>=6&&tw.kfc===0,reward:'Motif Immaculé · titre Intouchable · cadre Fumée animé · thème Neige'},
-    {id:'or',rar:'epique',temp:true,name:'Carte Or',desc:'Note 65, gras 15 % max, indice musculaire 20, viscérale 9 max',icon:'card',color:'#D9AE4A',ok:tr>=2,reward:'Cadre Anneau doré (tant que tu tiens le grade)'},
+    {id:'or',rar:'epique',temp:true,name:'Carte Or',desc:'Note 65, gras 15 % max, indice musculaire 20, viscérale 7 max',icon:'card',color:'#D9AE4A',ok:tr>=2,reward:'Cadre Anneau doré (tant que tu tiens le grade)'},
     {id:'top25fat',rar:'epique',name:'Top 25 % sèche',desc:'Dans les 25 % d’hommes de son âge les plus secs',icon:'flame',color:'#FF9F43',ok:[25,10,5].includes(pop('fat')),reward:'Motif Marbre · contour Cristal animé'},
     {id:'top25ffmi',rar:'epique',name:'Top 25 % muscle',desc:'Dans les 25 % les plus musclés (indice musculaire 21)',icon:'dumbbell',color:'#FF6B6B',ok:[25,10,5].includes(pop('ffmi')),reward:'Cadre Rubis · contour Grenat · thème Cramoisi'},
     {id:'top25visc',rar:'epique',name:'Top 25 % viscérale',desc:'Graisse viscérale à 6 ou moins',icon:'target',color:'#B89CFF',ok:[25,10,5].includes(pop('visc')),reward:'Motif Lignes'},
     {id:'top25waist',rar:'epique',name:'Top 25 % taille',desc:'Tour de taille sous 46 % de sa taille',icon:'ruler',color:'#C3C8CE',ok:[25,10,5].includes(pop('waist')),reward:'Cadre Ceinture'},
     {id:'visc',rar:'epique',name:'Ventre sain',desc:'Graisse viscérale à 5 ou moins',icon:'target',color:'#B89CFF',ok:!!last&&last.visc!=null&&last.visc<=5,reward:'Titre Ventre sain'},
     // ---- TRÈS DIFFICILE · légendaire : thèmes et contours animés
-    {id:'diamant',rar:'legendaire',temp:true,name:'Diamant',desc:'Note 80, gras 12 % max, indice musculaire 21, viscérale 5 max',icon:'card',color:'#7FE3FF',ok:tr>=3,reward:'Thème Diamant · motif Holographique · cadre Orbite de diamants (tant que tu tiens le grade)'},
-    {id:'leg',rar:'legendaire',temp:true,name:'Légende',desc:'Note 85, gras 10 % max, indice musculaire 22, viscérale 3 max',icon:'card',color:'#B89CFF',ok:tr>=4,reward:'Thème Légende · contour Prisme · motif Galaxie, animés (tant que tu tiens le grade)'},
+    {id:'diamant',rar:'legendaire',temp:true,name:'Diamant',desc:'Note 80, gras 12 % max, indice musculaire 21, viscérale 4 max',icon:'card',color:'#7FE3FF',ok:tr>=3,reward:'Thème Diamant · motif Holographique · cadre Orbite de diamants (tant que tu tiens le grade)'},
+    {id:'leg',rar:'legendaire',temp:true,name:'Légende',desc:'Note 85, gras 10 % max, indice musculaire 22, viscérale 2 max',icon:'card',color:'#B89CFF',ok:tr>=4,reward:'Thème Légende · contour Prisme · motif Galaxie, animés (tant que tu tiens le grade)'},
     {id:'under10',rar:'legendaire',name:'Sous les 10 %',desc:'Passer sous 10 % de masse grasse',icon:'flame',color:'#FF9F43',ok:!!last&&last.gras!=null&&last.gras<10,reward:'Thème Lame'},
     {id:'ffmi23',rar:'legendaire',name:'Titan',desc:'Indice musculaire 23 ou plus',icon:'dumbbell',color:'#FF6B6B',ok:!!a&&a.ffmi>=23,reward:'Thème Tonnerre · contour Tempête animé · titre Titan · motif Orage animé'},
     {id:'champ',rar:'legendaire',name:'Champion de saison',desc:'Finir premier du classement progression à la clôture d’une saison',icon:'trophy',color:'#D9AE4A',ok:DB.palmares.some(x=>x.champion===p.id),reward:'Thème Pourpre · contour Aura dorée animé · titre Champion'},
@@ -1525,7 +1525,7 @@ const HELP_SECTIONS=[
   ['moi-equipe','Moi vs l’équipe',`<p>Ton rang sur chaque stat parmi ceux qui l’ont mesurée, et le meilleur de l’équipe.</p>`],
   ['bmr','Métabolisme de base',`<p>Le métabolisme mesuré par la Tanita comparé à celui prédit pour ton âge, ta taille et ton poids (formule de Mifflin-St Jeor). Au-dessus du prédit = plus de masse maigre que la moyenne de ton gabarit. C’est ce rapport qui fait l’attribut Moteur.</p>`],
   ['surveiller','À surveiller',`<p>Les stats où tu es dans une zone à risque d’après les références (gras, viscérale, tour de taille…), avec la cible pour en sortir.</p>`],
-  ['grades','Grades',`<p>Argent : gras 18 % max, indice musculaire 19 min, viscérale 12 max. Or : note 65, gras 15 % max, indice 20 min, viscérale 9 max. Diamant : note 80, gras 12 % max, indice 21 min, viscérale 5 max. Légende : note 85, gras 10 % max, indice 22 min, viscérale 3 max. Un mois sans pesée fait descendre d’un grade. L’indice musculaire = masse musculaire Tanita ÷ taille².</p>`],
+  ['grades','Grades',`<p>Argent : gras 20 % max, c’est tout (« plus gros »). Or : note 65, gras 15 % max, indice 20 min, viscérale 7 max. Diamant : note 80, gras 12 % max, indice 21 min, viscérale 4 max. Légende : note 85, gras 10 % max, indice 22 min, viscérale 2 max. Un mois sans pesée fait descendre d’un grade. L’indice musculaire = masse musculaire Tanita ÷ taille².</p>`],
   ['attributs','Lecture des attributs',`<p>Chaque attribut va de 20 à 99. Puissance : indice 18 = 40, 24 = 90. Sèche : 25 % = 40, 10 % = 90. Moteur : métabolisme égal au prédit = 50, +10 % = 80. Équilibre : écart gauche-droite nul et rapport bras / jambes à 0,40 = 99. Santé : viscérale ≤ 5 et eau 55 à 65 %. Tronc : gras du tronc 12 % = 90, 30 % = 40. La note globale pondère Puissance et Sèche à 25 % chacune, les quatre autres à 12,5 %.</p>`],
   ['classement-saison','Classement et saison',`<p>Points de progression depuis le point de départ : 4 par kilo de gras perdu, 6 par kilo de muscle pris, 3 par kilo perdu sans analyse. Saison de 3 mois, champion à la clôture, dernière pesée = nouveau point de départ.</p>`],
   ['ceinture-trophees','Ceinture SPC et trophées',`<p>Ceinture remise en jeu chaque mois au meilleur gain de points. Poids lourd = plus grosse prise de muscle, Poids plume = plus grosse perte de gras, KFC = gras le mieux conservé (pire évolution), BK = gras du tronc le plus haut.</p>`],
@@ -1751,7 +1751,7 @@ function screenCarte(p, me){
   ${wi&&a.tanita?`
   <div class="panel"><div class="section-title" style="margin-bottom:8px">Niveau</div>
     <div style="font-size:13px;line-height:1.5">Le niveau dépend de l’état physique, pas seulement de la note. Gras ${fr(wi.gras)} % · indice musculaire ${fr(a.ffmi)} · viscérale ${wi.visc==null?'·':wi.visc}.<br>
-    <span class="muted">Argent : gras 18 % max, indice musculaire 19 min, viscérale 12 max. Or : note 65, gras 15 % max, indice 20 min, viscérale 9 max. Diamant : note 80, gras 12 % max, indice 21 min, viscérale 5 max. Légende : note 85, gras 10 % max, indice 22 min, viscérale 3 max. Un mois sans pesée : un grade en moins jusqu’à la pesée suivante.</span>
+    <span class="muted">Argent : gras 20 % max. Or : note 65, gras 15 % max, indice 20 min, viscérale 7 max. Diamant : note 80, gras 12 % max, indice 21 min, viscérale 4 max. Légende : note 85, gras 10 % max, indice 22 min, viscérale 2 max. Un mois sans pesée : un grade en moins jusqu’à la pesée suivante.</span>
     ${a.lapsed?`<div class="chip" style="margin-top:8px;border-color:var(--orange);color:var(--orange)">Pesée manquée : grade ${TIERS[a.earned].label} suspendu, repasse sur la balance pour le récupérer</div>`:''}
     ${a.nextTier?`<div class="chip" style="margin-top:8px;border-color:var(--gold);color:var(--gold2)">Prochain niveau ${a.nextTier.label} : ${a.nextTier.cond}</div>`:'<div class="chip" style="margin-top:8px;border-color:var(--violet);color:var(--violet)">Niveau maximal atteint</div>'}
     ${(()=>{const fc=forecast(p); if(!fc) return '<div class="muted" style="font-size:11px;margin-top:6px">Prévision disponible à partir de deux pesées complètes.</div>'; return fc.when?`<div class="chip" style="margin-top:6px;border-color:var(--cyan);color:var(--cyan)">À ce rythme : ${fc.label} en ${monthLabel(fc.when)} (estimation)</div>`:`<div class="chip" style="margin-top:6px;border-color:var(--orange);color:var(--orange)">À ce rythme, ${fc.label} ne viendra pas : gras ${signed(fc.rateG,1)} % par mois, indice ${signed(fc.rateF,2)} par mois</div>`;})()}</div></div>
@@ -1968,10 +1968,10 @@ function screenRegles(){
   <div class="panel"><div class="section-title" style="margin-bottom:8px">Protocole de pesée</div><div style="font-size:14px;line-height:1.5">Une pesée par mois, sur la même balance (Tanita de la salle, réglage Standard, Homme, taille à jour). Le matin ou avant la séance, à jeun depuis 3 heures, après être passé aux toilettes, pieds nus. Mètre ruban le même jour, côté droit, bras relâché, taille au nombril. Une pesée faite n’importe comment fausse toute la courbe.</div></div>
   <div class="panel"><div class="section-title" style="margin-bottom:8px">Grades</div><div style="font-size:14px;line-height:1.6">
     <div><strong style="color:#E8B98A">Bronze</strong> : par défaut.</div>
-    <div><strong style="color:#F2F4F6">Argent</strong> : gras 18 % max, indice musculaire 19 min, viscérale 12 max.</div>
-    <div><strong style="color:var(--gold2)">Or</strong> : note 65, gras 15 % max, indice 20 min, viscérale 9 max.</div>
-    <div><strong style="color:#7FE3FF">Diamant</strong> : note 80, gras 12 % max, indice 21 min, viscérale 5 max.</div>
-    <div><strong style="color:var(--violet)">Légende</strong> : note 85, gras 10 % max, indice 22 min, viscérale 3 max.</div>
+    <div><strong style="color:#F2F4F6">Argent</strong> : gras 20 % max, rien d’autre : le grade « plus gros ».</div>
+    <div><strong style="color:var(--gold2)">Or</strong> : note 65, gras 15 % max, indice 20 min, viscérale 7 max.</div>
+    <div><strong style="color:#7FE3FF">Diamant</strong> : note 80, gras 12 % max, indice 21 min, viscérale 4 max.</div>
+    <div><strong style="color:var(--violet)">Légende</strong> : note 85, gras 10 % max, indice 22 min, viscérale 2 max.</div>
     <div class="muted" style="font-size:12px;margin-top:6px">Indice musculaire = masse musculaire Tanita en kg divisée par la taille en mètres au carré. Il ne dépend pas du gras : perdre du gras ne le fait pas monter, seul le muscle compte. Repères hommes : 16-17 sédentaire, 18-19 sportif, 20-21 très développé, 22 et plus exceptionnel. Un mois sans pesée : un grade en moins jusqu’à la pesée suivante.</div></div></div>
   <div class="panel"><div class="section-title" style="margin-bottom:8px">Note et attributs</div><div style="font-size:14px;line-height:1.6">
     ${ATTR_META.map(m=>`<div><strong style="color:${m.color}">${m.name}</strong> <span class="muted">· ${m.help}</span></div>`).join('')}
@@ -2535,7 +2535,7 @@ function badgeHow(b){ // ce qu'il faut faire concrètement, en plus de l'intitul
   add(/EGYM|Écrans relevés|Dossier complet/i,'Les performances EGYM sont les valeurs affichées par les machines de la salle, relevées le jour de la pesée.');
   add(/Équilibre|proportionné/i,'Équilibre = l’attribut ÉQU de la carte : écart gauche-droite nul et rapport bras / jambes proche de 0,40 donnent 99.');
   add(/indice musculaire|indice/i,'Indice musculaire = masse musculaire Tanita divisée par la taille au carré (en mètres).');
-  add(/Carte (Argent|Or|Diamant|Légende)|grade/i,'Grades : Argent = gras 18 % max, indice 19, viscérale 12 max. Or = note 65, gras 15 % max, indice 20, viscérale 9 max. Diamant = note 80, gras 12 % max, indice 21, viscérale 5 max. Légende = note 85, gras 10 % max, indice 22, viscérale 3 max. Un grade se perd si on ne tient plus ses seuils.');
+  add(/Carte (Argent|Or|Diamant|Légende)|grade/i,'Grades : Argent = gras 20 % max. Or = note 65, gras 15 % max, indice 20, viscérale 7 max. Diamant = note 80, gras 12 % max, indice 21, viscérale 4 max. Légende = note 85, gras 10 % max, indice 22, viscérale 2 max. Un grade se perd si on ne tient plus ses seuils.');
   add(/révélation|nouvelle carte|Jour J/i,'La révélation, c’est l’heure fixée par l’admin le jour de la pesée : les cartes du mois s’ouvrent à ce moment-là, et il faut ouvrir la sienne ce jour-là.');
   add(/d’affilée|de suite|sans en rater|mensuelles/i,'Une pesée par mois civil, sans trou : rater un mois casse la série.');
   add(/gauche-droite|Symétrie/i,'Sur la pesée Tanita, comparer bras gauche et droit, jambe gauche et droite : muscle et gras à moins de 0,5 point d’écart partout.');
