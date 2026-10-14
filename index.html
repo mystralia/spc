@@ -584,12 +584,25 @@ const perfMeets=(ex,v,i)=>v!=null&&(perfLower(ex)?v<=ex.tiers[i]:v>=ex.tiers[i])
 function perfLevel(p,ex){ const b=perfBest(p,ex); let n=0; for(let i=0;i<5;i++) if(perfMeets(ex,b,i)) n=i+1; return n; }
 // cosmétiques : Argent = titre, Or = contour, Diamant = cadre ou motif, Légende = thème
 // Bronze : un cosmétique volontairement modeste de chaque type (contour terne, titre d'apprenti, fil de bronze, motif discret, teinte légère) ; les paliers suivants donnent les beaux
-const BRONZE_MOTIFS=[(c)=>`radial-gradient(${c(.16)} 1px,transparent 1.5px) 0 0/12px 12px`,(c)=>`repeating-linear-gradient(0deg,${c(.1)} 0 1px,transparent 1px 12px)`,(c)=>`repeating-linear-gradient(45deg,${c(.09)} 0 2px,transparent 2px 14px)`,(c)=>`linear-gradient(${c(.08)} 1px,transparent 1px) 0 0/16px 16px,linear-gradient(90deg,${c(.08)} 1px,transparent 1px) 0 0/16px 16px`];
+const BRONZE_MOTIFS=[ // douze familles, taille et angle qui varient avec l'exercice : chaque fond est différent
+  (c,k)=>`radial-gradient(${c(.2)} 1.2px,transparent 1.8px) 0 0/${10+k*4}px ${10+k*4}px`,
+  (c,k)=>`repeating-linear-gradient(${90+k*30}deg,${c(.16)} 0 1px,transparent 1px ${10+k*3}px)`,
+  (c,k)=>`repeating-linear-gradient(${45+k*20}deg,${c(.14)} 0 2px,transparent 2px ${12+k*4}px)`,
+  (c,k)=>`linear-gradient(${c(.12)} 1px,transparent 1px) 0 0/${14+k*4}px ${14+k*4}px,linear-gradient(90deg,${c(.12)} 1px,transparent 1px) 0 0/${14+k*4}px ${14+k*4}px`,
+  (c,k)=>`repeating-linear-gradient(${-45-k*15}deg,${c(.14)} 0 3px,transparent 3px ${16+k*4}px),repeating-linear-gradient(${45+k*15}deg,${c(.08)} 0 3px,transparent 3px ${16+k*4}px)`,
+  (c,k)=>`radial-gradient(circle,transparent ${6+k*2}px,${c(.14)} ${6+k*2}px,${c(.14)} ${7+k*2}px,transparent ${8+k*2}px) 0 0/${22+k*6}px ${22+k*6}px`,
+  (c,k)=>`linear-gradient(${c(.18)} 2px,transparent 2px) ${6+k}px 0/${18+k*4}px ${18+k*4}px,linear-gradient(90deg,${c(.18)} 2px,transparent 2px) 0 ${6+k}px/${18+k*4}px ${18+k*4}px`,
+  (c,k)=>`repeating-radial-gradient(circle at 0 0,${c(.12)} 0 2px,transparent 2px ${14+k*4}px)`,
+  (c,k)=>`linear-gradient(${c(.1)} 50%,transparent 50%) 0 0/100% ${10+k*3}px,linear-gradient(90deg,${c(.06)} 50%,transparent 50%) 0 0/${10+k*3}px 100%`,
+  (c,k)=>`repeating-linear-gradient(${60+k*20}deg,${c(.16)} 0 6px,transparent 6px ${20+k*5}px)`,
+  (c,k)=>`radial-gradient(${c(.22)} 2px,transparent 2.5px) 0 0/${16+k*4}px ${16+k*4}px,radial-gradient(${c(.12)} 2px,transparent 2.5px) ${8+k*2}px ${8+k*2}px/${16+k*4}px ${16+k*4}px`,
+  (c,k)=>`conic-gradient(from ${k*30}deg,${c(.14)} 0 25%,transparent 0 50%,${c(.14)} 0 75%,transparent 0) 0 0/${18+k*4}px ${18+k*4}px`
+];
 for(const ex of PERF){ const c=hexA(ex.c1); const dull=hexMix(ex.c1,.55,'#6B6F75'), low=ex.name.charAt(0).toLowerCase()+ex.name.slice(1); const i=PERF.indexOf(ex);
   COSM.contour.push({id:'pf0_'+ex.key,name:`Bronze terne · ${ex.name}`,cond:`Défi ${ex.name} Bronze`,rar:'commun',badge:perfId(ex,0),css:`linear-gradient(135deg,${hexMix(dull,.25,'#FFFFFF')},${dull} 60%,${hexMix(dull,.5,'#000000')})`});
   COSM.titre.push({id:'pf0_'+ex.key,name:`Apprenti · ${low}`,cond:`Défi ${ex.name} Bronze`,rar:'commun',badge:perfId(ex,0)});
   COSM.cadre.push({id:'pf0_'+ex.key,name:`Fil de bronze · ${ex.name}`,cond:`Défi ${ex.name} Bronze`,rar:'commun',badge:perfId(ex,0),css:`box-shadow:0 0 0 2px ${dull}`});
-  COSM.motif.push({id:'pf0_'+ex.key,name:`${ex.name} · discret`,cond:`Défi ${ex.name} Bronze`,rar:'commun',badge:perfId(ex,0),css:BRONZE_MOTIFS[i%BRONZE_MOTIFS.length](c)});
+  COSM.motif.push({id:'pf0_'+ex.key,name:`${ex.name} · discret`,cond:`Défi ${ex.name} Bronze`,rar:'commun',badge:perfId(ex,0),css:BRONZE_MOTIFS[i%BRONZE_MOTIFS.length](c,Math.floor(i/BRONZE_MOTIFS.length))});
   COSM.theme.push({id:'pf0_'+ex.key,name:`Teinte · ${low}`,cond:`Défi ${ex.name} Bronze`,rar:'commun',badge:perfId(ex,0),vars:{'--bg':hexMix(ex.c1,.95,'#0B0D10'),'--panel':hexMix(ex.c1,.93,'#14171C'),'--panel2':hexMix(ex.c1,.9,'#1B1F26'),'--line':hexMix(ex.c1,.8,'#2A2F38')}});
   COSM.titre.push({id:'pf_'+ex.key,name:ex.a,cond:`Défi ${ex.name} Argent`,rar:'rare',badge:perfId(ex,1)});
   COSM.contour.push({id:'pf_'+ex.key,name:ex.o,cond:`Défi ${ex.name} Or`,rar:'epique',badge:perfId(ex,2),css:`linear-gradient(135deg,${ex.c2},${ex.c1} 55%,${hexMix(ex.c1,.45,'#000000')})`});
@@ -708,7 +721,7 @@ function snapshotOf(d){ const s={profiles:{},weighins:{},badges:new Set(),pronos
   for(const key of Object.keys(d.comments||{})) for(const c of d.comments[key]) s.comments[c.id]=JSON.stringify(Object.assign({key},c));
   s.claims={}; for(const c of (d.claims||[])) s.claims[c.id]=JSON.stringify(claimRow(c));
   s.reglages=JSON.stringify({pesee:d.pesee,season:d.season,palmares:d.palmares}); return s; }
-const APP_VERSION='20261014221105';
+const APP_VERSION='20261014221411';
 function versionCheck(){ if(!/github\.io$/.test(location.hostname)) return; fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(j=>{ if(j&&j.v&&j.v!==APP_VERSION){ if(!cloudFormOpen()&&!(CLOUD.saveTimer||CLOUD.saving)) location.reload(); else toast('Nouvelle version disponible : recharge l’appli quand tu as fini.'); } }).catch(()=>{}); }
 document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible'){ versionCheck(); if(CLOUD.on&&CLOUD.ready) cloudLoad(false); } });
 setInterval(versionCheck,5*60e3); setTimeout(versionCheck,4000);
