@@ -742,8 +742,12 @@ function snapshotOf(d){ const s={profiles:{},weighins:{},badges:new Set(),pronos
   for(const key of Object.keys(d.comments||{})) for(const c of d.comments[key]) s.comments[c.id]=JSON.stringify(Object.assign({key},c));
   s.claims={}; for(const c of (d.claims||[])) s.claims[c.id]=JSON.stringify(claimRow(c));
   s.reglages=JSON.stringify({pesee:d.pesee,season:d.season,palmares:d.palmares}); return s; }
-const APP_VERSION='20261014223449';
-function versionCheck(){ if(!/github\.io$/.test(location.hostname)) return; fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(j=>{ if(j&&j.v&&j.v!==APP_VERSION){ if(!cloudFormOpen()&&!(CLOUD.saveTimer||CLOUD.saving)) location.reload(); else toast('Nouvelle version disponible : recharge l’appli quand tu as fini.'); } }).catch(()=>{}); }
+const APP_VERSION='20261014223651';
+function versionCheck(){ if(!/github\.io$/.test(location.hostname)) return; fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(j=>{ if(j&&j.v&&j.v!==APP_VERSION){
+  // on ne recharge qu'une fois par version annoncée : si le serveur sert encore l'ancienne page (cache), pas de boucle de rechargements
+  let tried=null; try{ tried=sessionStorage.getItem('spc-reload-for'); }catch(_){}
+  if(tried===j.v) return;
+  if(!cloudFormOpen()&&!(CLOUD.saveTimer||CLOUD.saving)){ try{ sessionStorage.setItem('spc-reload-for',j.v); }catch(_){} location.reload(); } else toast('Nouvelle version disponible : recharge l’appli quand tu as fini.'); } }).catch(()=>{}); }
 document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible'){ versionCheck(); if(CLOUD.on&&CLOUD.ready) cloudLoad(false); } });
 setInterval(versionCheck,5*60e3); setTimeout(versionCheck,4000);
 function cloudStatus(msg){ CLOUD.err=msg||null; const el=document.getElementById('cloud-err'); if(el) el.textContent=msg||''; if(msg) console.warn('[SPC cloud]',msg); }
