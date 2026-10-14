@@ -630,7 +630,8 @@ for(const ex of PERF){ const idx=PERF.indexOf(ex); const low=ex.name.charAt(0).t
       COSM.theme.push({id,name:[`Teinte · ${low}`,`Argenté · ${low}`,`Doré · ${low}`,`Glacé · ${low}`][t],cond,rar,badge,vars}); }
   }
 }
-const perfReward=(ex,i)=>{ const T=TIER_STYLE[i]; const items=['contour','titre','cadre','motif','theme'].map(k=>{ const it=COSM[k].find(x=>x.badge===perfId(ex,i)); return it?({contour:'contour ',titre:'titre ',cadre:'cadre ',motif:'motif ',theme:'thème '}[k])+it.name:null; }).filter(Boolean); return `Lot ${T.n} : ${items.join(', ')}`; };
+const PERF_REWARD_TXT={}; for(const ex of PERF) for(let i=0;i<5;i++){ const b=perfId(ex,i); const items=['contour','titre','cadre','motif','theme'].map(k=>{ const it=COSM[k].find(x=>x.badge===b); return it?({contour:'contour ',titre:'titre ',cadre:'cadre ',motif:'motif ',theme:'thème '}[k])+it.name:null; }).filter(Boolean); PERF_REWARD_TXT[b]=`Lot ${TIER_STYLE[i].n} : ${items.join(', ')}`; }
+const perfReward=(ex,i)=>PERF_REWARD_TXT[perfId(ex,i)];
 // badges : un par palier, acquis pour toujours, hors compte des 96 défis
 function perfBadges(p){ const out=[]; for(const ex of PERF){ const best=perfBest(p,ex); for(let i=0;i<5;i++){ const g=PERF_GRADES[i][0]; out.push({id:perfId(ex,i),perf:true,grade:g,level:i,ex:ex.key,rar:PERF_RAR[g],name:`${ex.name} · ${perfGradeLabel(i)}`,desc:perfCond(ex,ex.tiers[i]),icon:ex.icon,color:TIERS[g].accent,ok:perfMeets(ex,best,i),reward:perfReward(ex,i)}); } } return out; }
 // saisie : parse « 4:30 », « 4 min 30 », « 270 »
@@ -741,7 +742,7 @@ function snapshotOf(d){ const s={profiles:{},weighins:{},badges:new Set(),pronos
   for(const key of Object.keys(d.comments||{})) for(const c of d.comments[key]) s.comments[c.id]=JSON.stringify(Object.assign({key},c));
   s.claims={}; for(const c of (d.claims||[])) s.claims[c.id]=JSON.stringify(claimRow(c));
   s.reglages=JSON.stringify({pesee:d.pesee,season:d.season,palmares:d.palmares}); return s; }
-const APP_VERSION='20261014223209';
+const APP_VERSION='20261014223449';
 function versionCheck(){ if(!/github\.io$/.test(location.hostname)) return; fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(j=>{ if(j&&j.v&&j.v!==APP_VERSION){ if(!cloudFormOpen()&&!(CLOUD.saveTimer||CLOUD.saving)) location.reload(); else toast('Nouvelle version disponible : recharge l’appli quand tu as fini.'); } }).catch(()=>{}); }
 document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible'){ versionCheck(); if(CLOUD.on&&CLOUD.ready) cloudLoad(false); } });
 setInterval(versionCheck,5*60e3); setTimeout(versionCheck,4000);
@@ -868,7 +869,7 @@ const Store = {
   key:'stats-corpo-v1',
   load(){ if(CLOUD.on){ const c=cloudCache(); if(c){ CLOUD.paths=c.paths||{}; CLOUD.cacheUser=c.user; return c.db; } return emptyDB(); } let d=null; try{ const s=localStorage.getItem(this.key); if(s) d=JSON.parse(s);}catch(e){} if(!d) d=JSON.parse(JSON.stringify(DEMO));
     if(!d.season) d.season={num:1,start:'2026-09',end:'2026-11'}; if(!d.palmares) d.palmares=[]; if(!d.badgeLog) d.badgeLog={}; if(!d.profiles.some(p=>p.admin)&&d.profiles[0]) d.profiles[0].admin=true; if(!d.profiles.some(p=>'horsConcours' in p)){const a=d.profiles.find(p=>p.id==='p6'); if(a) a.horsConcours=true;} if(!d.pesee) d.pesee={date:null,dispos:{}}; if(!d.pronos) d.pronos={}; if(!d.comments) d.comments={}; if(!d.claims) d.claims=[]; for(const x of d.weighins||[]) if(!x.id) x.id=x.profileId+'-'+x.mois; if(d.pesee.date&&!d.pesee.revealAt){ d.pesee.revealAt=d.pesee.date+'T'+(d.pesee.heure||'20:00')+':00'; d.pesee.revealMois=d.pesee.date.slice(0,7); } for(const k of Object.keys(d.pesee.dispos)){ if(Array.isArray(d.pesee.dispos[k])) d.pesee.dispos[k]=Object.fromEntries(d.pesee.dispos[k].map(x=>[x,'ok'])); } if(!d.fix||d.fix<1){ const w3=(d.weighins||[]).find(x=>x.id==='p3-2026-10'); if(w3&&w3.poids===86.4) Object.assign(w3,{poids:85,gras:18.7,muscle:65.5,eau:57.4,visc:6,bmr:2022,segM:{tronc:34.6,brasG:4.2,brasD:4.2,jambeG:11.2,jambeD:11.3},segG:{tronc:21.1,brasG:16.3,brasD:16.2,jambeG:15.5,jambeD:14.9}}); const w4=(d.weighins||[]).find(x=>x.id==='p4-2026-10'); if(w4&&w4.gras==null) Object.assign(w4,{poids:97.4,gras:26.4,muscle:68.2,eau:50.6,visc:8,bmr:2153,segM:{tronc:36.6,brasG:4.4,brasD:4.5,jambeG:11.5,jambeD:11.2},segG:{tronc:28.7,brasG:20.9,brasD:20.2,jambeG:24.2,jambeD:25.5}}); const p3=d.profiles.find(x=>x.id==='p3'); if(p3&&p3.taille===173) p3.taille=175; d.fix=1; } return d; },
-  save(d){ if(CLOUD.on){ cloudQueueSave(); return; } try{ localStorage.setItem(this.key, JSON.stringify(d)); }catch(e){} },
+  save(d){ badgesInvalidate(); if(CLOUD.on){ cloudQueueSave(); return; } try{ localStorage.setItem(this.key, JSON.stringify(d)); }catch(e){} },
   reset(){ if(CLOUD.on) return; try{ localStorage.removeItem(this.key); localStorage.removeItem('stats-corpo-me'); }catch(e){} }
 };
 let DB = Store.load();
@@ -1072,7 +1073,9 @@ function popTier(p,w,key){ // top % de la population pour une stat : 50, 25, 10,
   if(key==='waist'){ if(!w.mens||!w.mens.taille) return null; return tier(w.mens.taille/p.taille,[0.5,0.46,0.43,0.41],true); }
   return null; }
 const RARITY={commun:{label:'Commun',color:'#9AA1A9'},rare:{label:'Rare',color:'#5DA9FF'},epique:{label:'Épique',color:'#B89CFF'},legendaire:{label:'Légendaire',color:'#F6DE96'}};
-function badgesOf(p){
+let BADGE_GEN=0; const BADGE_CACHE=new Map(); const badgesInvalidate=()=>{ BADGE_GEN++; BADGE_CACHE.clear(); };
+function badgesOf(p){ if(!p) return []; const hit=BADGE_CACHE.get(p.id); if(hit&&hit.gen===BADGE_GEN&&hit.p===p) return hit.v; const v=badgesOfRaw(p); BADGE_CACHE.set(p.id,{gen:BADGE_GEN,p,v}); return v; }
+function badgesOfRaw(p){
   const l=weighinsOf(p.id), f=l[0], last=l[l.length-1], a=attrs(p,last), pr=progression(p);
   const dArm=last&&last.segG?Math.abs(last.segG.brasG-last.segG.brasD):9, dLeg=last&&last.segG?Math.abs(last.segG.jambeG-last.segG.jambeD):9;
   const md=monthDeltas(p), gr=goalsReached(p), tw=trophiesWon(p.id), tr=['bronze','argent','or','diamant','legende'].indexOf(a?a.tier:'bronze');
@@ -1581,7 +1584,7 @@ function openHelp(id, page){ try{ const m=profile(ME); if(m) trackHelp(m,page?'p
 
 const THEME_VARS=['--bg','--panel','--panel2','--line','--gold','--gold2'];
 function applyTheme(me){ try{ const th=me?cosmOf(me,'theme'):COSM.theme[0]; const r=document.documentElement; for(const k of THEME_VARS){ if(th.vars&&th.vars[k]) r.style.setProperty(k,th.vars[k]); else r.style.removeProperty(k); } }catch(e){} }
-function render(){ try{ renderInner(); }catch(e){ renderError(e); } }
+function render(){ badgesInvalidate(); try{ renderInner(); }catch(e){ renderError(e); } }
 // Filet de sécurité : si un écran plante, on l'affiche au lieu de bloquer l'appli, avec un bouton de retour
 function renderError(e){ console.error(e); const app=document.getElementById('app'); const where=(e&&e.stack||'').split('\n').slice(1,3).join(' ').replace(/https?:\/\/\S*\//g,'').slice(0,200);
   if(app) app.innerHTML=`<div class="screen"><div class="panel" style="border-color:var(--red)"><div class="section-title" style="margin-bottom:6px;color:var(--red)">Écran en panne</div><div style="font-size:13px">L’écran « ${esc(state.screen||'?')} » a planté. Envoie une capture de ce message à Bozo.</div><div class="muted" style="font-size:11px;margin-top:6px;word-break:break-all">${esc(String(e&&e.message||e))}<br>${esc(where)}<br>version ${APP_VERSION}</div><div class="row" style="gap:8px;margin-top:10px"><button class="btn small primary" data-act="err-home">Revenir à l’accueil</button><button class="btn small ghost" data-act="err-reload">Recharger l’appli</button></div></div></div>`;
