@@ -28,7 +28,7 @@ create policy "modifier badge" on badges_acquis for update to authenticated usin
 -- Garde-fou : un participant ne peut pas se nommer admin, se mettre hors concours ni changer son compte
 create or replace function participants_guard() returns trigger language plpgsql as $$
 begin
-  if not is_admin() then
+  if coalesce(auth.role(),'') = 'authenticated' and not is_admin() then -- le SQL Editor (sans compte) reste libre
     if new.admin is distinct from old.admin or new.hors_concours is distinct from old.hors_concours or new.auth_user is distinct from old.auth_user then
       raise exception 'modification réservée à l''admin';
     end if;
