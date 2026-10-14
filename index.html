@@ -650,6 +650,11 @@ const PROFILE_COLS={prenom:'prenom',naissance:'naissance',sexe:'sexe',taille:'ta
 const PESEE_COLS={poids:'poids',gras:'gras',muscle:'muscle',os:'os',eau:'eau',visc:'visc',bmr:'bmr',ageMeta:'age_meta',segM:'seg_m',segG:'seg_g',mens:'mens',egym:'egym',perf:'perf',goalsResult:'goals_result',pre:'pre',present:'present'};
 const PROFILE_SKIP=new Set(['id','pin','auth_user']), PESEE_SKIP=new Set(['id','profileId','mois','photos']);
 const num=(v)=>v==null||v===''?null:(typeof v==='number'?v:parseFloat(v));
+const NAV_KEYS=['screen','profileId','statKey','pronoMois','evoMetric','evoAll','rankTab','compA','compB','saisiePour','saisieMois','goalsFor'];
+function cloudCache(){ try{ const c=JSON.parse(localStorage.getItem('spc-cloud-cache')||'null'); if(c&&c.db&&Date.now()-c.at<12*3600e3) return c; }catch(e){} return null; }
+function cloudCacheSave(){ try{ localStorage.setItem('spc-cloud-cache',JSON.stringify({db:DB,paths:CLOUD.paths,user:CLOUD.user&&CLOUD.user.id,at:Date.now()})); }catch(e){} }
+function navSave(){ if(!CLOUD.on||!ME) return; try{ const o={at:Date.now()}; for(const k of NAV_KEYS) o[k]=state[k]; localStorage.setItem('spc-nav',JSON.stringify(o)); }catch(e){} }
+function navRestore(){ try{ const o=JSON.parse(localStorage.getItem('spc-nav')||'null'); if(!o||Date.now()-o.at>3*3600e3) return; if(['login','loading','newpass','ceremonie','saisie'].includes(o.screen)) return; for(const k of NAV_KEYS) if(o[k]!==undefined) state[k]=o[k]; }catch(e){} }
 function emptyDB(){ return {profiles:[],weighins:[],badgeLog:{},pronos:{},comments:{},pesee:{date:null,dispos:{}},season:{num:1,start:'2026-09',end:'2026-11'},palmares:[],fix:1}; }
 function profileRow(p){ const r={id:p.id}; const extra={}; for(const k of Object.keys(p)){ if(PROFILE_SKIP.has(k)) continue; if(PROFILE_COLS[k]) r[PROFILE_COLS[k]]=p[k]==null?null:p[k]; else extra[k]=p[k]; }
   for(const k of Object.keys(PROFILE_COLS)) if(!(k in p)) r[PROFILE_COLS[k]]=(['equip','machines','flags','secret'].includes(k)?{}:k==='machineLog'?[]:['admin','horsConcours'].includes(k)?false:null);
@@ -671,9 +676,10 @@ function cloudStatus(msg){ CLOUD.err=msg||null; const el=document.getElementById
 async function cloudInit(){
   if(!window.supabase||!window.supabase.createClient){ cloudStatus('Librairie serveur introuvable.'); return; }
   CLOUD.sb=window.supabase.createClient(CLOUD.url,CLOUD.key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
-  CLOUD.sb.auth.onAuthStateChange((ev,session)=>{ if(ev==='PASSWORD_RECOVERY'){ CLOUD.recovery=true; state.screen='newpass'; render(); } if(ev==='SIGNED_OUT'){ CLOUD.user=null; ME=null; CLOUD.ready=false; Object.assign(DB,emptyDB()); state.screen='potes'; render(); } });
+  CLOUD.sb.auth.onAuthStateChange((ev,session)=>{ if(ev==='PASSWORD_RECOVERY'){ CLOUD.recovery=true; state.screen='newpass'; render(); } if(ev==='SIGNED_OUT'){ CLOUD.user=null; CLOUD.cacheUser=null; ME=null; CLOUD.ready=false; Object.assign(DB,emptyDB()); try{ localStorage.removeItem('spc-cloud-cache'); localStorage.removeItem('spc-nav'); }catch(e){} state.screen='potes'; render(); } });
   const {data}=await CLOUD.sb.auth.getSession(); CLOUD.user=data&&data.session?data.session.user:null;
-  if(CLOUD.user) await cloudLoad(true); else render();
+  if(CLOUD.user&&CLOUD.cacheUser===CLOUD.user.id&&DB.profiles.length){ const me=DB.profiles.find(p=>p.auth_user===CLOUD.user.id); ME=me?me.id:null; CLOUD.snap=snapshotOf(DB); CLOUD.ready=true; navRestore(); cloudSubscribe(); render(); cloudLoad(false); }
+  else if(CLOUD.user) await cloudLoad(true); else render();
 }
 async function cloudLogin(email,password){ const {data,error}=await CLOUD.sb.auth.signInWithPassword({email,password}); if(error) return error.message; CLOUD.user=data.user; await cloudLoad(true); return null; }
 async function cloudLogout(){ await CLOUD.sb.auth.signOut(); }
@@ -695,8 +701,8 @@ async function cloudLoad(first){
     Object.assign(DB,d); for(const k of Object.keys(DB)) if(!(k in d)) delete DB[k];
     CLOUD.snap=snapshotOf(DB);
     const me=DB.profiles.find(p=>p.auth_user===CLOUD.user.id);
-    ME=me?me.id:null; CLOUD.ready=true; cloudStatus(null);
-    if(first){ state.screen=CLOUD.recovery?'newpass':'potes'; cloudSubscribe(); }
+    ME=me?me.id:null; CLOUD.ready=true; CLOUD.fresh=true; cloudStatus(null); cloudCacheSave();
+    if(first){ state.screen=CLOUD.recovery?'newpass':'potes'; if(!CLOUD.recovery) navRestore(); cloudSubscribe(); }
     if(!cloudFormOpen()) render();
   }catch(e){ cloudStatus('Chargement impossible : '+e.message); if(first){ state.screen='potes'; render(); } }
   finally{ CLOUD.loading=false; if(CLOUD.dirty){ CLOUD.dirty=false; cloudLoad(false); } }
@@ -704,7 +710,7 @@ async function cloudLoad(first){
 function cloudFormOpen(){ return ['saisie','profil','objectifs','newpass','login'].includes(state.screen)||!!document.querySelector('.sheet')||(state.screen==='pronos'&&!pronoLockedNow()); }
 function pronoLockedNow(){ try{ const p=profile(ME); if(!p) return true; const o=pronoOf(pronoMois(),ME); return !!(o&&o.locked); }catch(e){ return true; } }
 function cloudSubscribe(){ try{ CLOUD.sb.channel('spc-db').on('postgres_changes',{event:'*',schema:'public'},()=>{ clearTimeout(CLOUD.reloadTimer); CLOUD.reloadTimer=setTimeout(()=>{ if(CLOUD.saveTimer||CLOUD.saving){ CLOUD.reloadTimer=setTimeout(()=>cloudLoad(false),800); return; } cloudLoad(false); },700); }).subscribe(); }catch(e){ console.warn('realtime',e); } }
-function cloudQueueSave(){ if(!CLOUD.ready) return; clearTimeout(CLOUD.saveTimer); CLOUD.saveTimer=setTimeout(()=>{ CLOUD.saveTimer=null; cloudSave(); },350); }
+function cloudQueueSave(){ if(!CLOUD.ready) return; clearTimeout(CLOUD.saveTimer); CLOUD.saveTimer=setTimeout(()=>{ CLOUD.saveTimer=null; if(!CLOUD.fresh){ cloudQueueSave(); return; } cloudSave(); },CLOUD.fresh?350:600); }
 async function dataUrlBlob(u){ const r=await fetch(u); return r.blob(); }
 async function cloudSave(){
   if(CLOUD.saving){ CLOUD.saveTimer=setTimeout(()=>{CLOUD.saveTimer=null;cloudSave();},400); return; } CLOUD.saving=true;
@@ -777,7 +783,7 @@ async function cloudForgot(email){ if(!email) return 'Écris ton e-mail d’abor
 
 const Store = {
   key:'stats-corpo-v1',
-  load(){ if(CLOUD.on) return emptyDB(); let d=null; try{ const s=localStorage.getItem(this.key); if(s) d=JSON.parse(s);}catch(e){} if(!d) d=JSON.parse(JSON.stringify(DEMO));
+  load(){ if(CLOUD.on){ const c=cloudCache(); if(c){ CLOUD.paths=c.paths||{}; CLOUD.cacheUser=c.user; return c.db; } return emptyDB(); } let d=null; try{ const s=localStorage.getItem(this.key); if(s) d=JSON.parse(s);}catch(e){} if(!d) d=JSON.parse(JSON.stringify(DEMO));
     if(!d.season) d.season={num:1,start:'2026-09',end:'2026-11'}; if(!d.palmares) d.palmares=[]; if(!d.badgeLog) d.badgeLog={}; if(!d.profiles.some(p=>p.admin)&&d.profiles[0]) d.profiles[0].admin=true; if(!d.profiles.some(p=>'horsConcours' in p)){const a=d.profiles.find(p=>p.id==='p6'); if(a) a.horsConcours=true;} if(!d.pesee) d.pesee={date:null,dispos:{}}; if(!d.pronos) d.pronos={}; if(!d.comments) d.comments={}; for(const x of d.weighins||[]) if(!x.id) x.id=x.profileId+'-'+x.mois; if(d.pesee.date&&!d.pesee.revealAt){ d.pesee.revealAt=d.pesee.date+'T'+(d.pesee.heure||'20:00')+':00'; d.pesee.revealMois=d.pesee.date.slice(0,7); } for(const k of Object.keys(d.pesee.dispos)){ if(Array.isArray(d.pesee.dispos[k])) d.pesee.dispos[k]=Object.fromEntries(d.pesee.dispos[k].map(x=>[x,'ok'])); } if(!d.fix||d.fix<1){ const w3=(d.weighins||[]).find(x=>x.id==='p3-2026-10'); if(w3&&w3.poids===86.4) Object.assign(w3,{poids:85,gras:18.7,muscle:65.5,eau:57.4,visc:6,bmr:2022,segM:{tronc:34.6,brasG:4.2,brasD:4.2,jambeG:11.2,jambeD:11.3},segG:{tronc:21.1,brasG:16.3,brasD:16.2,jambeG:15.5,jambeD:14.9}}); const w4=(d.weighins||[]).find(x=>x.id==='p4-2026-10'); if(w4&&w4.gras==null) Object.assign(w4,{poids:97.4,gras:26.4,muscle:68.2,eau:50.6,visc:8,bmr:2153,segM:{tronc:36.6,brasG:4.4,brasD:4.5,jambeG:11.5,jambeD:11.2},segG:{tronc:28.7,brasG:20.9,brasD:20.2,jambeG:24.2,jambeD:25.5}}); const p3=d.profiles.find(x=>x.id==='p3'); if(p3&&p3.taille===173) p3.taille=175; d.fix=1; } return d; },
   save(d){ if(CLOUD.on){ cloudQueueSave(); return; } try{ localStorage.setItem(this.key, JSON.stringify(d)); }catch(e){} },
   reset(){ if(CLOUD.on) return; try{ localStorage.removeItem(this.key); localStorage.removeItem('stats-corpo-me'); }catch(e){} }
@@ -1465,6 +1471,7 @@ function openHelp(id, page){ try{ const m=profile(ME); if(m) trackHelp(m,page?'p
 const THEME_VARS=['--bg','--panel','--panel2','--line','--gold','--gold2'];
 function applyTheme(me){ try{ const th=me?cosmOf(me,'theme'):COSM.theme[0]; const r=document.documentElement; for(const k of THEME_VARS){ if(th.vars&&th.vars[k]) r.style.setProperty(k,th.vars[k]); else r.style.removeProperty(k); } }catch(e){} }
 function render(){
+  render.lastY=window.scrollY;
   nav(); applyTheme(ME?profile(ME):null);
   const app=document.getElementById('app');
   const me=ME?profile(ME):null;
@@ -1496,8 +1503,12 @@ function render(){
   }
   if(me){ try{ trackOpen(me); trackScreen(me,state.screen); if(state.screen==='carte'){ const q=profile(state.profileId); if(q) trackView(me,q); } }catch(e){} }
   app.innerHTML=html+(state.toast?`<div class="toast" role="status">${esc(state.toast)}</div>`:''); injectHelp();
-  window.scrollTo(0,0);
+  const key=state.screen+'|'+state.profileId+'|'+state.statKey+'|'+state.pronoMois+'|'+state.saisiePour; if(render.lastKey===key) window.scrollTo(0,render.lastY||0); else window.scrollTo(0,0); if(render.lastKey!==key&&!HIST.popping) histPush(); HIST.popping=false; render.lastKey=key; navSave();
 }
+const HIST={popping:false,sheetDepth:0};
+function navNow(){ const o={}; for(const k of NAV_KEYS) o[k]=state[k]; return o; }
+function histPush(){ try{ if(history.state&&history.state.spc) history.pushState({spc:true,nav:navNow()},''); else history.replaceState({spc:true,nav:navNow()},''); }catch(e){} }
+window.addEventListener('popstate',(e)=>{ const sh=document.querySelector('.sheet'); if(sh){ sh.remove(); return; } const ov=document.querySelector('.overlay'); if(ov){ ov.remove(); return; } if(e.state&&e.state.spc&&e.state.nav){ HIST.popping=true; for(const k of NAV_KEYS) state[k]=e.state.nav[k]; render(); } else { HIST.popping=true; state.screen='potes'; render(); try{ history.replaceState({spc:true,nav:navNow()},''); }catch(e2){} } });
 function brand(){ return `<div class="brand"><img src="${IMG.logo}" alt="SurPoids Championship"><span class="t">SurPoids Championship</span></div>`; }
 function header(title, eyebrow, right=''){
   return `${brand()}<div class="topbar"><div><div class="eyebrow">${eyebrow}</div><h1>${title}</h1></div>${right}</div>`;
@@ -2193,8 +2204,37 @@ function reveal(p, before, after){
 function rankOf(pid){ const rows=DB.profiles.map(p=>({id:p.id,pts:progression(p).pts})).sort((a,b)=>b.pts-a.pts); return rows.findIndex(r=>r.id===pid)+1; }
 function sheet(title, body, actions=''){ document.querySelectorAll('.sheet').forEach(x=>x.remove());
   const o=document.createElement('div'); o.className='sheet'; o.innerHTML=`<div class="sh"><div class="row" style="justify-content:space-between;align-items:flex-start;gap:10px"><div style="font-family:var(--display);font-size:20px;line-height:1.1">${title}</div><button class="btn small ghost" data-sheet-close aria-label="Fermer" style="width:40px;padding:0">✕</button></div><div style="font-size:14px;line-height:1.5;margin-top:8px">${body}</div>${actions?`<div class="row" style="gap:8px;margin-top:12px;flex-wrap:wrap">${actions}</div>`:''}</div>`;
-  o.addEventListener('click',(e)=>{ if(e.target===o||e.target.closest('[data-sheet-close]')) o.remove(); });
+  o.addEventListener('click',(e)=>{ if(e.target===o||e.target.closest('[data-sheet-close]')){ o.remove(); if(history.state&&history.state.sheet) history.back(); } });
+  try{ history.pushState({spc:true,sheet:true,nav:navNow()},''); }catch(e){}
   document.body.appendChild(o); return o; }
+function badgeHow(b){ // ce qu'il faut faire concrètement, en plus de l'intitulé
+  if(!b) return ''; const d=(b.desc||'')+' '+(b.name||''); const out=[]; const add=(re,t)=>{ if(re.test(d)) out.push(t); };
+  if(b.secret) return 'Badge secret : pas d’indice, il se découvre en utilisant l’appli.';
+  if(b.perf) return 'Performance à réaliser devant les autres le jour de la pesée (une seule tentative comptée) ; l’admin la saisit dans la pesée, rubrique Performances. Les paliers Bronze, Argent, Or, Diamant et Légende sont acquis pour toujours.';
+  add(/depuis le départ/i,'« Depuis le départ » = par rapport à ta première pesée de la saison.');
+  add(/Tanita|analyse/i,'Une pesée Tanita, c’est le passage sur la balance de la salle avec le détail par zone, saisi par l’admin le jour J.');
+  add(/KFC/,'Le KFC (Kilos Franchement Conservés) va chaque mois à celui qui a repris le plus de gras, ou qui en a perdu le moins, entre deux analyses Tanita.');
+  add(/\bBK\b|Bide King|Roi du bide/i,'Le BK (Bide King) va à celui qui a le gras du tronc le plus haut à la pesée du mois.');
+  add(/ceinture|tenant/i,'La ceinture SPC se gagne à chaque pesée avec le meilleur score de progression du mois : 4 points par kilo de gras perdu, 6 par kilo de muscle pris (3 par kilo perdu sur la balance sans analyse). Il faut deux pesées pour concourir, et on la garde tant que personne ne fait mieux.');
+  add(/Poids plume|Triple plume/i,'Poids plume = la plus grosse perte de gras du mois en kilos, 0,3 kg minimum, entre deux analyses Tanita.');
+  add(/Poids lourd|Triple lourd/i,'Poids lourd = la plus grosse prise de muscle du mois en kilos, 0,3 kg minimum, entre deux analyses Tanita.');
+  add(/titre|Collectionneur|Colosse|Grand chelem/i,'Les titres mensuels récompensent la meilleure progression de masse musculaire du tronc, des bras et des jambes (en % depuis la pesée précédente), un titre par zone et par mois.');
+  add(/objectif|Chirurgical|Razzia|Doublé|Zéro pointé|Paroles/i,'Les objectifs se fixent dans l’onglet Objectifs avant la pesée, puis se valident (ils sont alors verrouillés) ; ils sont jugés à la pesée suivante.');
+  add(/dispos|Présent à l’appel|Toujours là/i,'Les dispos se cochent dans Profil, « Mes dispos pour la prochaine pesée », avant que l’admin fixe la date.');
+  add(/photo|Avant · après|Sous tous les angles|Visage/i,'Les photos face, profil et dos se prennent le jour de la pesée et sont ajoutées par l’admin dans la saisie ; la photo de profil se met soi-même dans Profil.');
+  add(/mètre ruban|tour de taille|cm de taille|sept tours/i,'Le mètre ruban (cou, poitrine, taille, hanches, bras, cuisse, mollet) est pris le jour de la pesée et saisi par l’admin.');
+  add(/EGYM|Écrans relevés|Dossier complet/i,'Les performances EGYM sont les valeurs affichées par les machines de la salle, relevées le jour de la pesée.');
+  add(/Équilibre|proportionné/i,'Équilibre = l’attribut ÉQU de la carte : écart gauche-droite nul et rapport bras / jambes proche de 0,40 donnent 99.');
+  add(/indice musculaire|indice/i,'Indice musculaire = masse musculaire Tanita divisée par la taille au carré (en mètres).');
+  add(/Carte (Argent|Or|Diamant|Légende)|grade/i,'Grades : Argent = gras 18 % max, indice 19, viscérale 12 max. Or = note 65, gras 15 % max, indice 20, viscérale 9 max. Diamant = note 80, gras 12 % max, indice 21, viscérale 5 max. Légende = note 85, gras 10 % max, indice 22, viscérale 3 max. Un grade se perd si on ne tient plus ses seuils.');
+  add(/révélation|nouvelle carte|Jour J/i,'La révélation, c’est l’heure fixée par l’admin le jour de la pesée : les cartes du mois s’ouvrent à ce moment-là, et il faut ouvrir la sienne ce jour-là.');
+  add(/d’affilée|de suite|sans en rater|mensuelles/i,'Une pesée par mois civil, sans trou : rater un mois casse la série.');
+  add(/gauche-droite|Symétrie/i,'Sur la pesée Tanita, comparer bras gauche et droit, jambe gauche et droite : muscle et gras à moins de 0,5 point d’écart partout.');
+  add(/viscérale/i,'La graisse viscérale est le chiffre « Visceral » de la Tanita (de 1 à 59, 12 et moins = normal).');
+  add(/Recomposition|gras en baisse et muscle/i,'Entre deux analyses Tanita du même mois à l’autre : masse grasse en kilos qui baisse et masse musculaire qui monte.');
+  add(/champion|saison/i,'Le champion de saison est le premier du classement de progression à la clôture de la saison par l’admin.');
+  if(!out.length) out.push('Rien à déclarer : c’est vérifié automatiquement à chaque pesée saisie par l’admin, et le badge tombe dès que la condition est remplie.');
+  return out.join(' '); }
 function previewSheet(me, opts){ // aperçu d'un défi ou d'un cosmétique verrouillé sur ma carte
   if(opts.kind){ const it=(COSM[opts.kind]||[]).find(x=>x.id===opts.id); if(it&&it.secret&&!unlockOk(me,it)){ sheet('???','<div class="muted">Cosmétique secret : il se débloque avec un badge secret. Fouille l’appli, ouvre tout, essaie des choses.</div>'); return; } }
   // on part de la carte telle qu'elle est vraiment (cosmétiques effectifs, pas les réglages d'un ancien test), puis on ajoute l'élément à visualiser
@@ -2203,9 +2243,10 @@ function previewSheet(me, opts){ // aperçu d'un défi ou d'un cosmétique verro
   if(opts.devise){ rar='rare'; fake.devise=me.devise||'Ma devise ici'; title=`<span class="rar-rare">Devise</span>`; desc=`<strong>Pour la débloquer :</strong> prendre la ceinture SPC au moins une fois (défi Ceinture SPC). Ensuite tu écris la phrase que tu veux, 30 caractères, elle s’affiche sous ton titre.${deviseUnlocked(me)?' <span style="color:var(--green)">Débloquée.</span>':' Pas encore débloquée, voici l’aperçu sur ta carte.'}`; }
   else if(opts.badge){ const b=badgesOf(me).find(x=>x.id===opts.badge); if(!b) return; rar=b.rar||'commun'; fake.equip.badges=[b.id,...eff.badges.filter(x=>x!==b.id)].slice(0,3); if(b.id==='belt1') fake.devise=me.devise||'Ma devise ici';
     for(const k of Object.keys(COSM)) for(const it of COSM[k]) if(it.badge===b.id){ if(k==='theme') theme=it; else fake.equip[k]=it.id; }
-    title=`<span style="color:${b.color}">${svg(b.icon,20,2.4)}</span> <span class="rar-${rar}">${b.name}</span>`; desc=`<strong>Pour le débloquer :</strong> ${b.desc.toLowerCase()}.${b.reward?' <strong>Récompense :</strong> '+b.reward+'.':' Badge seul, sans cosmétique.'}${b.ok?' <span style="color:var(--green)">Débloqué.</span>':' Pas encore débloqué, voici ce que ça donnerait sur ta carte'+(theme?' et dans l’appli':'')+'.'}`; }
+    title=`<span style="color:${b.color}">${svg(b.icon,20,2.4)}</span> <span class="rar-${rar}">${b.name}</span>`; desc=`<strong>Le défi :</strong> ${b.desc}.${b.reward?' <strong>Récompense :</strong> '+b.reward+'.':' Badge seul, sans cosmétique.'}${b.ok?' <span style="color:var(--green)">Débloqué.</span>':' Pas encore débloqué, voici ce que ça donnerait sur ta carte'+(theme?' et dans l’appli':'')+'.'}${badgeHow(b)?`<div class="muted" style="font-size:12.5px;margin-top:6px"><strong>Concrètement :</strong> ${badgeHow(b)}</div>`:''}`; }
   else { const it=(COSM[opts.kind]||[]).find(x=>x.id===opts.id); if(!it) return; rar=it.rar||'commun'; if(opts.kind==='theme') theme=it; else fake.equip[opts.kind]=it.id;
-    title=`<span class="rar-${rar}">${it.name}</span>`; desc=`<strong>Pour le débloquer :</strong> ${it.cond.toLowerCase()}.${unlockOk(me,it)?' Débloqué.':' Pas encore débloqué, voici l’aperçu sur ta carte.'}`; }
+    title=`<span class="rar-${rar}">${it.name}</span>`; const bb=it.badge?badgesOf(me).find(x=>x.id===it.badge):null;
+    desc=`<strong>Pour le débloquer :</strong> ${bb?`défi « ${bb.name} » : ${bb.desc}`:it.cond}.${unlockOk(me,it)?' <span style="color:var(--green)">Débloqué.</span>':' Pas encore débloqué, voici l’aperçu sur ta carte.'}${(bb?badgeHow(bb):/grade/i.test(it.cond)?badgeHow({desc:'grade'}):'')?`<div class="muted" style="font-size:12.5px;margin-top:6px"><strong>Concrètement :</strong> ${bb?badgeHow(bb):badgeHow({desc:'grade'})}</div>`:''}`; }
   const r=RARITY[rar]; const wi=lastOf(me.id), a=attrs(me,wi);
   // deux cartes superposées : la carte actuelle dessous, la carte avec l'élément dessus qui apparaît et disparaît
   const base=Object.assign({},me,{testUnlock:false,equip:Object.assign({},me.equip||{})});
@@ -2218,8 +2259,8 @@ function cardInfo(el){ const p=profile(el.dataset.pid); if(!p) return; const kin
   if(kind==='attr'){ const i=+el.dataset.i, m=ATTR_META[i], code=['PUI','SEC','MOT','SYM','SAN','REG'][i], w=lastOf(p.id), a=attrs(p,w); const v=a&&a.list[i];
     const ranks=DB.profiles.map(q=>{const aq=attrs(q,lastOf(q.id));return {q,v:aq?aq.list[i]:null};}).filter(x=>x.v!=null).sort((x,y)=>y.v-x.v); const pos=ranks.findIndex(x=>x.q.id===p.id)+1;
     sheet(`${m.name} <span style="color:${m.color}">${v!=null?v:'·'}</span>`, `${m.help}.${v!=null?` ${esc(p.prenom)} est ${pos}${pos===1?'er':'e'} sur ${ranks.length} ${pos===1?'':'(meilleur : '+esc(ranks[0].q.prenom)+' '+ranks[0].v+')'}. 100 = le maximum du barème, 20 = le minimum.`:' Pas de valeur : il manque une analyse Tanita.'}`, `<button class="btn small" data-go="stat" data-id="${p.id}" data-stat="${code}" data-sheet-close>Historique</button><button class="btn small ghost" data-go="regles" data-sheet-close>Les règles</button>`); }
-  else if(kind==='badge'){ const b=badgesOf(p).find(x=>x.id===el.dataset.id); if(!b) return; const r=RARITY[b.rar||'commun']; sheet(`<span style="color:${b.color}">${svg(b.icon,20,2.4)}</span> <span class="rar-${b.rar||'commun'}">${b.name}</span><span class="rar-tag" style="color:${r.color}">${r.label}</span>`, `${b.desc}.${b.reward?' Récompense : '+b.reward+'.':''}${b.ok?' Débloqué par '+esc(p.prenom)+'.':' Pas encore débloqué.'}`); }
-  else if(kind==='titre'){ const t=COSM.titre.find(x=>x.id===el.dataset.id); if(!t) return; const r=RARITY[t.rar||'commun']; sheet(`<span class="rar-${t.rar||'commun'}">${t.name}</span><span class="rar-tag" style="color:${r.color}">${r.label}</span>`, `Titre honorifique. ${t.cond}.`); }
+  else if(kind==='badge'){ const b=badgesOf(p).find(x=>x.id===el.dataset.id); if(!b) return; const r=RARITY[b.rar||'commun']; sheet(`<span style="color:${b.color}">${svg(b.icon,20,2.4)}</span> <span class="rar-${b.rar||'commun'}">${b.name}</span><span class="rar-tag" style="color:${r.color}">${r.label}</span>`, `<strong>Le défi :</strong> ${b.desc}.${b.reward?' <strong>Récompense :</strong> '+b.reward+'.':''}${b.ok?' <span style="color:var(--green)">Débloqué par '+esc(p.prenom)+'.</span>':' Pas encore débloqué.'}${badgeHow(b)?`<div class="muted" style="font-size:12.5px;margin-top:6px"><strong>Concrètement :</strong> ${badgeHow(b)}</div>`:''}`); }
+  else if(kind==='titre'){ const t=COSM.titre.find(x=>x.id===el.dataset.id); if(!t) return; const r=RARITY[t.rar||'commun']; const tb=t.badge?badgesOf(p).find(x=>x.id===t.badge):null; sheet(`<span class="rar-${t.rar||'commun'}">${t.name}</span><span class="rar-tag" style="color:${r.color}">${r.label}</span>`, `Titre honorifique. ${tb?`Défi « ${tb.name} » : ${tb.desc}.`:t.cond+'.'}${tb&&badgeHow(tb)?`<div class="muted" style="font-size:12.5px;margin-top:6px"><strong>Concrètement :</strong> ${badgeHow(tb)}</div>`:''}`); }
   else if(kind==='devise'){ sheet(`Devise de ${esc(p.prenom)}`, `<em>“${esc(deviseOf(p)||'')}”</em><div class="muted" style="font-size:12px;margin-top:6px">Phrase libre, 30 caractères, débloquée avec la première ceinture SPC. Chacun la change depuis son profil.</div>`); }
   else if(kind==='stars'){ const n=trophiesWon(p.id).belt; sheet(`${'★'.repeat(Math.min(5,n))}`, `${n} mois avec la ceinture SPC pour ${esc(p.prenom)}. Une étoile par mois, cinq maximum.`, `<button class="btn small" data-go="ceinture" data-sheet-close>Historique de la ceinture</button>`); } }
 function toast(msg){state.toast=msg;render();setTimeout(()=>{state.toast=null;render();},2200);}
