@@ -507,7 +507,7 @@ const PERF=[
   {key:'pone',fam:'corps',name:'Pompes à une main',unit:'d’affilée',kind:'count',icon:'dumbbell',c1:'#FF6B6B',c2:'#F6DE96',tiers:[1,3,6,10,20],std:'Une main dans le dos, pieds écartés, poitrine qui frôle le sol.',a:'Main unique',o:'Fonte',d:['cadre','Anneau de fonte'],l:'Ring'},
   {key:'course',fam:'cardio',name:'Course sans arrêt',unit:'distance',kind:'km',icon:'heart',c1:'#6BCB77',c2:'#C9F2CE',tiers:[3,5,10,21.1,42.2],std:'Sans marcher ni s’arrêter, allure libre, distance mesurée par montre ou appli.',a:'Le Coureur',o:'Bitume',d:['motif','Piste','piste'],l:'Asphalte'},
   {key:'c5k',fam:'cardio',name:'5 km chrono',unit:'temps',kind:'time',icon:'heart',c1:'#FF9F43',c2:'#FFE0BF',tiers:[1800,1500,1320,1200,1080],std:'5 km mesurés, départ arrêté, temps montre ou chrono officiel.',a:'Chrono',o:'Ligne d’arrivée',d:['cadre','Chronomètre'],l:'Dossard'},
-  {key:'c10k',fam:'cardio',name:'10 km chrono',unit:'temps',kind:'time',icon:'heart',c1:'#F28C8C',c2:'#FFE0E0',tiers:[3600,3300,3000,2700,2400],std:'10 km mesurés, départ arrêté, temps montre ou chrono officiel.',a:'Dix bornes',o:'Bitume',d:['motif','Bornes','bornes'],l:'Grand fond'},
+  {key:'c10k',fam:'cardio',name:'10 km chrono',unit:'temps',kind:'time',icon:'heart',c1:'#F28C8C',c2:'#FFE0E0',tiers:[3600,3300,3000,2700,2400],std:'10 km mesurés, départ arrêté, temps montre ou chrono officiel.',a:'Dix bornes',o:'Asphalte',d:['motif','Bornes','bornes'],l:'Grand fond'},
   {key:'cooper',fam:'cardio',name:'Test de Cooper',unit:'en 12 min',kind:'m',icon:'heart',c1:'#FF6B6B',c2:'#FFC4C4',tiers:[2000,2400,2800,3200,3600],std:'Distance parcourue en 12 minutes, sur piste ou terrain plat mesuré.',a:'Cooper',o:'Tartan',d:['motif','Couloirs','couloirs'],l:'Stade'},
   {key:'velo',fam:'cardio',name:'Vélo en une sortie',unit:'distance',kind:'km',icon:'zap',c1:'#FFD93D',c2:'#FFF3B0',tiers:[20,50,100,150,200],std:'Une seule sortie, pauses courtes autorisées, distance montre ou compteur.',a:'Le Grimpeur',o:'Chaîne',d:['motif','Pignons','pignons'],l:'Peloton'},
   {key:'rameur',fam:'cardio',name:'Rameur 2 km',unit:'temps',kind:'time',icon:'droplet',c1:'#5DA9FF',c2:'#D6E8FF',tiers:[540,480,450,420,390],std:'2 000 m sur rameur Concept2 ou équivalent, résistance libre.',a:'Le Rameur',o:'Rame',d:['cadre','Hublot'],l:'Régate'},
@@ -527,10 +527,10 @@ const PERF=[
   {key:'farmer',fam:'force',name:'Marche du fermier',unit:'mètres, ton poids en mains',kind:'m',icon:'weight',c1:'#E0A87A',c2:'#F7DCC4',tiers:[10,20,40,60,100],std:'Charge totale égale à ton poids de corps, répartie dans les deux mains, sans poser.',a:'Le Fermier',o:'Paille',d:['cadre','Fer à cheval'],l:'Grange'},
   {key:'ohp',fam:'force',name:'Développé militaire',unit:'× poids de corps',kind:'ratio',icon:'weight',c1:'#FFD93D',c2:'#FFF3B0',tiers:[0.4,0.55,0.7,0.85,1],std:'Debout, barre des épaules jusqu’à bras tendus au-dessus de la tête, sans impulsion des jambes ; charge divisée par ton poids du jour.',a:'Le Militaire',o:'Kaki',d:['cadre','Épaulettes'],l:'Caserne'},
   {key:'row',fam:'force',name:'Rowing barre',unit:'× poids de corps',kind:'ratio',icon:'weight',c1:'#5DA9FF',c2:'#D6E8FF',tiers:[0.5,0.7,0.9,1.1,1.3],std:'Buste penché, barre tirée jusqu’au ventre sans élan du dos ; charge divisée par ton poids du jour.',a:'Dos large',o:'Acier bleui',d:['motif','Tôle larmée','losanges'],l:'Chantier naval'},
-  {key:'hipthrust',fam:'force',name:'Hip thrust',unit:'× poids de corps',kind:'ratio',icon:'weight',c1:'#FF9F43',c2:'#FFD9A8',tiers:[1,1.5,2,2.5,3],std:'Dos sur le banc, barre sur les hanches, bassin verrouillé en haut ; charge divisée par ton poids du jour.',a:'Le Pont',o:'Cuivre',d:['cadre','Anneau de cuivre'],l:'Forge'},
+  {key:'hipthrust',fam:'force',name:'Hip thrust',unit:'× poids de corps',kind:'ratio',icon:'weight',c1:'#FF9F43',c2:'#FFD9A8',tiers:[1,1.5,2,2.5,3],std:'Dos sur le banc, barre sur les hanches, bassin verrouillé en haut ; charge divisée par ton poids du jour.',a:'Le Pont',o:'Cuivre rouge',d:['cadre','Anneau de cuivre'],l:'Haut fourneau'},
   {key:'pullupW',fam:'force',name:'Tractions lestées',unit:'poids ajouté × poids de corps',kind:'ratio',icon:'weight',c1:'#B89CFF',c2:'#E6DAFF',tiers:[0.1,0.25,0.4,0.55,0.75],std:'Une traction stricte avec du lest ; poids ajouté divisé par ton poids du jour.',a:'Le Lesté',o:'Plomb',d:['motif','Chaînes','corde'],l:'Donjon'},
   {key:'dipsW',fam:'force',name:'Dips lestés',unit:'poids ajouté × poids de corps',kind:'ratio',icon:'weight',c1:'#FF6B6B',c2:'#FFC4C4',tiers:[0.15,0.3,0.5,0.7,0.9],std:'Un dip complet aux barres parallèles avec du lest ; poids ajouté divisé par ton poids du jour.',a:'Ceinture de lest',o:'Fonte noire',d:['cadre','Anneau lesté'],l:'Souterrain'},
-  {key:'curl',fam:'force',name:'Curl barre',unit:'× poids de corps',kind:'ratio',icon:'weight',c1:'#6BCB77',c2:'#C9F2CE',tiers:[0.25,0.35,0.5,0.6,0.75],std:'Debout, dos droit, coudes fixes, sans balancier ; charge divisée par ton poids du jour.',a:'Le Bicepseur',o:'Chrome',d:['motif','Disques de fonte','disques'],l:'Vestiaire'}
+  {key:'curl',fam:'force',name:'Curl barre',unit:'× poids de corps',kind:'ratio',icon:'weight',c1:'#6BCB77',c2:'#C9F2CE',tiers:[0.25,0.35,0.5,0.6,0.75],std:'Debout, dos droit, coudes fixes, sans balancier ; charge divisée par ton poids du jour.',a:'Le Bicepseur',o:'Chrome poli',d:['motif','Disques de fonte','disques'],l:'Salle des miroirs'}
 ];
 const PERF_MOTIFS={
   barreaux:(c)=>`repeating-linear-gradient(90deg,${c(.22)} 0 4px,transparent 4px 18px)`,
@@ -583,34 +583,54 @@ function perfCutDo(pid,key,lvl){ if(!isAdmin()) return; const p=profile(pid), ex
 const perfMeets=(ex,v,i)=>v!=null&&(perfLower(ex)?v<=ex.tiers[i]:v>=ex.tiers[i]);
 function perfLevel(p,ex){ const b=perfBest(p,ex); let n=0; for(let i=0;i<5;i++) if(perfMeets(ex,b,i)) n=i+1; return n; }
 // cosmétiques : Argent = titre, Or = contour, Diamant = cadre ou motif, Légende = thème
-// Bronze : un cosmétique volontairement modeste de chaque type (contour terne, titre d'apprenti, fil de bronze, motif discret, teinte légère) ; les paliers suivants donnent les beaux
-const BRONZE_MOTIFS=[ // douze familles, taille et angle qui varient avec l'exercice : chaque fond est différent
-  (c,k)=>`radial-gradient(${c(.2)} 1.2px,transparent 1.8px) 0 0/${10+k*4}px ${10+k*4}px`,
-  (c,k)=>`repeating-linear-gradient(${90+k*30}deg,${c(.16)} 0 1px,transparent 1px ${10+k*3}px)`,
-  (c,k)=>`repeating-linear-gradient(${45+k*20}deg,${c(.14)} 0 2px,transparent 2px ${12+k*4}px)`,
-  (c,k)=>`linear-gradient(${c(.12)} 1px,transparent 1px) 0 0/${14+k*4}px ${14+k*4}px,linear-gradient(90deg,${c(.12)} 1px,transparent 1px) 0 0/${14+k*4}px ${14+k*4}px`,
-  (c,k)=>`repeating-linear-gradient(${-45-k*15}deg,${c(.14)} 0 3px,transparent 3px ${16+k*4}px),repeating-linear-gradient(${45+k*15}deg,${c(.08)} 0 3px,transparent 3px ${16+k*4}px)`,
-  (c,k)=>`radial-gradient(circle,transparent ${6+k*2}px,${c(.14)} ${6+k*2}px,${c(.14)} ${7+k*2}px,transparent ${8+k*2}px) 0 0/${22+k*6}px ${22+k*6}px`,
-  (c,k)=>`linear-gradient(${c(.18)} 2px,transparent 2px) ${6+k}px 0/${18+k*4}px ${18+k*4}px,linear-gradient(90deg,${c(.18)} 2px,transparent 2px) 0 ${6+k}px/${18+k*4}px ${18+k*4}px`,
-  (c,k)=>`repeating-radial-gradient(circle at 0 0,${c(.12)} 0 2px,transparent 2px ${14+k*4}px)`,
-  (c,k)=>`linear-gradient(${c(.1)} 50%,transparent 50%) 0 0/100% ${10+k*3}px,linear-gradient(90deg,${c(.06)} 50%,transparent 50%) 0 0/${10+k*3}px 100%`,
-  (c,k)=>`repeating-linear-gradient(${60+k*20}deg,${c(.16)} 0 6px,transparent 6px ${20+k*5}px)`,
-  (c,k)=>`radial-gradient(${c(.22)} 2px,transparent 2.5px) 0 0/${16+k*4}px ${16+k*4}px,radial-gradient(${c(.12)} 2px,transparent 2.5px) ${8+k*2}px ${8+k*2}px/${16+k*4}px ${16+k*4}px`,
-  (c,k)=>`conic-gradient(from ${k*30}deg,${c(.14)} 0 25%,transparent 0 50%,${c(.14)} 0 75%,transparent 0) 0 0/${18+k*4}px ${18+k*4}px`
+// Chaque palier de chaque exercice débloque un lot complet et unique : contour, titre, cadre, motif de fond, thème. Le style monte avec le palier :
+// Bronze terne, Argent argenté, Or doré, Diamant glacé et animé, Légende blanc incandescent. La teinte et la famille de motif viennent de l'exercice.
+const MOTIF_FAMILIES=[ // douze familles, taille et angle qui varient avec l'exercice
+  (c,k,a)=>`radial-gradient(${c(a)} 1.2px,transparent 1.8px) 0 0/${10+k*4}px ${10+k*4}px`,
+  (c,k,a)=>`repeating-linear-gradient(${90+k*30}deg,${c(a)} 0 1px,transparent 1px ${10+k*3}px)`,
+  (c,k,a)=>`repeating-linear-gradient(${45+k*20}deg,${c(a)} 0 2px,transparent 2px ${12+k*4}px)`,
+  (c,k,a)=>`linear-gradient(${c(a)} 1px,transparent 1px) 0 0/${14+k*4}px ${14+k*4}px,linear-gradient(90deg,${c(a)} 1px,transparent 1px) 0 0/${14+k*4}px ${14+k*4}px`,
+  (c,k,a)=>`repeating-linear-gradient(${-45-k*15}deg,${c(a)} 0 3px,transparent 3px ${16+k*4}px),repeating-linear-gradient(${45+k*15}deg,${c(a*.6)} 0 3px,transparent 3px ${16+k*4}px)`,
+  (c,k,a)=>`radial-gradient(circle,transparent ${6+k*2}px,${c(a)} ${6+k*2}px,${c(a)} ${7+k*2}px,transparent ${8+k*2}px) 0 0/${22+k*6}px ${22+k*6}px`,
+  (c,k,a)=>`linear-gradient(${c(a)} 2px,transparent 2px) ${6+k}px 0/${18+k*4}px ${18+k*4}px,linear-gradient(90deg,${c(a)} 2px,transparent 2px) 0 ${6+k}px/${18+k*4}px ${18+k*4}px`,
+  (c,k,a)=>`repeating-radial-gradient(circle at 0 0,${c(a)} 0 2px,transparent 2px ${14+k*4}px)`,
+  (c,k,a)=>`linear-gradient(${c(a*.7)} 50%,transparent 50%) 0 0/100% ${10+k*3}px,linear-gradient(90deg,${c(a*.4)} 50%,transparent 50%) 0 0/${10+k*3}px 100%`,
+  (c,k,a)=>`repeating-linear-gradient(${60+k*20}deg,${c(a)} 0 6px,transparent 6px ${20+k*5}px)`,
+  (c,k,a)=>`radial-gradient(${c(a)} 2px,transparent 2.5px) 0 0/${16+k*4}px ${16+k*4}px,radial-gradient(${c(a*.6)} 2px,transparent 2.5px) ${8+k*2}px ${8+k*2}px/${16+k*4}px ${16+k*4}px`,
+  (c,k,a)=>`conic-gradient(from ${k*30}deg,${c(a)} 0 25%,transparent 0 50%,${c(a)} 0 75%,transparent 0) 0 0/${18+k*4}px ${18+k*4}px`
 ];
-for(const ex of PERF){ const c=hexA(ex.c1); const dull=hexMix(ex.c1,.55,'#6B6F75'), low=ex.name.charAt(0).toLowerCase()+ex.name.slice(1); const i=PERF.indexOf(ex);
-  COSM.contour.push({id:'pf0_'+ex.key,name:`Bronze terne · ${ex.name}`,cond:`Défi ${ex.name} Bronze`,rar:'commun',badge:perfId(ex,0),css:`linear-gradient(135deg,${hexMix(dull,.25,'#FFFFFF')},${dull} 60%,${hexMix(dull,.5,'#000000')})`});
-  COSM.titre.push({id:'pf0_'+ex.key,name:`Apprenti · ${low}`,cond:`Défi ${ex.name} Bronze`,rar:'commun',badge:perfId(ex,0)});
-  COSM.cadre.push({id:'pf0_'+ex.key,name:`Fil de bronze · ${ex.name}`,cond:`Défi ${ex.name} Bronze`,rar:'commun',badge:perfId(ex,0),css:`box-shadow:0 0 0 2px ${dull}`});
-  COSM.motif.push({id:'pf0_'+ex.key,name:`${ex.name} · discret`,cond:`Défi ${ex.name} Bronze`,rar:'commun',badge:perfId(ex,0),css:BRONZE_MOTIFS[i%BRONZE_MOTIFS.length](c,Math.floor(i/BRONZE_MOTIFS.length))});
-  COSM.theme.push({id:'pf0_'+ex.key,name:`Teinte · ${low}`,cond:`Défi ${ex.name} Bronze`,rar:'commun',badge:perfId(ex,0),vars:{'--bg':hexMix(ex.c1,.95,'#0B0D10'),'--panel':hexMix(ex.c1,.93,'#14171C'),'--panel2':hexMix(ex.c1,.9,'#1B1F26'),'--line':hexMix(ex.c1,.8,'#2A2F38')}});
-  COSM.titre.push({id:'pf_'+ex.key,name:ex.a,cond:`Défi ${ex.name} Argent`,rar:'rare',badge:perfId(ex,1)});
-  COSM.contour.push({id:'pf_'+ex.key,name:ex.o,cond:`Défi ${ex.name} Or`,rar:'epique',badge:perfId(ex,2),css:`linear-gradient(135deg,${ex.c2},${ex.c1} 55%,${hexMix(ex.c1,.45,'#000000')})`});
-  if(ex.d[0]==='cadre') COSM.cadre.push({id:'pf_'+ex.key,name:ex.d[1],cond:`Défi ${ex.name} Diamant`,rar:'legendaire',badge:perfId(ex,3),css:`box-shadow:0 0 0 3px ${ex.c2},0 0 0 5px ${ex.c1},0 0 18px ${ex.c2};--fx1:${ex.c2};--fx2:${ex.c1}`,fx:PERF.indexOf(ex)%2?'pulse':'sparkle'});
-  else COSM.motif.push({id:'pf_'+ex.key,name:ex.d[1],cond:`Défi ${ex.name} Diamant`,rar:'legendaire',badge:perfId(ex,3),css:PERF_MOTIFS[ex.d[2]](c)});
-  COSM.theme.push({id:'pf_'+ex.key,name:ex.l,cond:`Défi ${ex.name} Légende`,rar:'legendaire',badge:perfId(ex,4),vars:{'--bg':hexMix(ex.c1,.9,'#000000'),'--panel':hexMix(ex.c1,.84,'#000000'),'--panel2':hexMix(ex.c1,.78,'#000000'),'--line':hexMix(ex.c1,.55,'#000000'),'--gold':ex.c2==='#FFFFFF'?ex.c1:ex.c2,'--gold2':hexMix(ex.c2,.5,'#FFFFFF')}});
+const TIER_STYLE={ // par palier : nom du lot, couleur de métal, rareté
+  0:{n:'Bronze',metal:'#8C6A3F',rar:'commun'},1:{n:'Argent',metal:'#C8CDD3',rar:'rare'},2:{n:'Or',metal:'#D9AE4A',rar:'epique'},3:{n:'Diamant',metal:'#9FE3FF',rar:'legendaire'},4:{n:'Légende',metal:'#FFFFFF',rar:'legendaire'}};
+for(const ex of PERF){ const idx=PERF.indexOf(ex); const low=ex.name.charAt(0).toLowerCase()+ex.name.slice(1); const fam=idx%MOTIF_FAMILIES.length, k=Math.floor(idx/MOTIF_FAMILIES.length);
+  for(let t=0;t<5;t++){ const T=TIER_STYLE[t]; const id=(t===0?'pf0_':t===1?'pf1_':t===2?'pf2_':t===3?'pf3_':'pf4_')+ex.key; const cond=`Défi ${ex.name} ${T.n}`; const badge=perfId(ex,t); const rar=T.rar;
+    const tone=t===0?hexMix(ex.c1,.55,'#6B6F75'):hexMix(ex.c1,[0,.35,.3,.25,.2][t],T.metal); const c=hexA(tone); const alpha=[.18,.24,.3,.36,.42][t];
+    // contour
+    const contourCss=[`linear-gradient(135deg,${hexMix(tone,.25,'#FFFFFF')},${tone} 60%,${hexMix(tone,.5,'#000000')})`,
+      `linear-gradient(135deg,#F2F4F6,${tone} 45%,${hexMix(tone,.35,'#000000')} 80%,#E9ECEF)`,
+      null, // Or : contour dessiné à la main (ex.o)
+      `conic-gradient(from 0deg,${ex.c2},#FFFFFF,${tone},${ex.c2},#FFFFFF,${ex.c2})`,
+      `conic-gradient(from 0deg,#FFFFFF,${ex.c1},#FFFFFF,${ex.c2},#FFFFFF)`][t];
+    if(t===2) COSM.contour.push({id:'pf_'+ex.key,name:ex.o,cond,rar,badge,css:`linear-gradient(135deg,${ex.c2},${ex.c1} 55%,${hexMix(ex.c1,.45,'#000000')})`});
+    else COSM.contour.push({id,name:[`Bronze terne · ${ex.name}`,`Argent · ${ex.name}`,'',`Diamant · ${ex.name}`,`${ex.o} incandescent`][t],cond,rar,badge,css:contourCss,fx:t>=3?'spin':undefined});
+    // titre
+    if(t===1) COSM.titre.push({id:'pf_'+ex.key,name:ex.a,cond,rar,badge});
+    else COSM.titre.push({id,name:[`Apprenti · ${low}`,'',`${ex.a} d’or`,`${ex.a} de diamant`,`Légende · ${low}`][t],cond,rar,badge});
+    // cadre
+    if(t===3&&ex.d[0]==='cadre') COSM.cadre.push({id:'pf_'+ex.key,name:ex.d[1],cond,rar,badge,css:`box-shadow:0 0 0 3px ${ex.c2},0 0 0 5px ${ex.c1},0 0 18px ${ex.c2};--fx1:${ex.c2};--fx2:${ex.c1}`,fx:idx%2?'pulse':'sparkle'});
+    else COSM.cadre.push({id,name:[`Fil de bronze · ${ex.name}`,`Anneau d’argent · ${ex.name}`,`Anneau d’or · ${ex.name}`,`Anneau de diamant · ${ex.name}`,`Couronne · ${ex.name}`][t],cond,rar,badge,
+      css:[`box-shadow:0 0 0 2px ${tone}`,`box-shadow:0 0 0 2px #E9ECEF,0 0 0 4px ${tone}`,`box-shadow:0 0 0 3px #D9AE4A,0 0 0 5px ${tone},0 0 10px ${ex.c1}`,`box-shadow:0 0 0 3px #E6FBFF,0 0 0 5px ${ex.c1},0 0 18px #9FE3FF;--fx1:#E6FBFF;--fx2:${ex.c1}`,`box-shadow:0 0 0 3px #FFFFFF,0 0 0 6px ${ex.c1},0 0 24px 4px #FFFFFF;--fx1:#FFFFFF;--fx2:${ex.c2}`][t],fx:t===3?'pulse':t===4?'sparkle':undefined});
+    // motif : même famille que l'exercice, de plus en plus marqué ; Diamant garde le motif dessiné à la main quand il existe
+    if(t===3&&ex.d[0]==='motif') COSM.motif.push({id:'pf_'+ex.key,name:ex.d[1],cond,rar,badge,css:PERF_MOTIFS[ex.d[2]](hexA(ex.c1))});
+    else { const famT=(fam+t*2)%MOTIF_FAMILIES.length; /* cinq familles différentes par exercice */ const css=MOTIF_FAMILIES[famT](c,k,alpha)+(t>=2?`,radial-gradient(circle at 50% 0,${hexA(T.metal)(t===4?.22:.12)},transparent 70%)`:'');
+      COSM.motif.push({id,name:[`${ex.name} · discret`,`${ex.name} · argenté`,`${ex.name} · doré`,`${ex.name} · glacé`,`${ex.name} · incandescent`][t],cond,rar,badge,css}); }
+    // thème
+    if(t===4) COSM.theme.push({id:'pf_'+ex.key,name:ex.l,cond,rar,badge,vars:{'--bg':hexMix(ex.c1,.9,'#000000'),'--panel':hexMix(ex.c1,.84,'#000000'),'--panel2':hexMix(ex.c1,.78,'#000000'),'--line':hexMix(ex.c1,.55,'#000000'),'--gold':ex.c2==='#FFFFFF'?ex.c1:ex.c2,'--gold2':hexMix(ex.c2,.5,'#FFFFFF')}});
+    else { const d=[.95,.92,.9,.88][t], acc=[null,'#C8CDD3','#F6DE96','#9FE3FF'][t];
+      const vars={'--bg':hexMix(ex.c1,d,'#0B0D10'),'--panel':hexMix(ex.c1,d-.02,'#14171C'),'--panel2':hexMix(ex.c1,d-.05,'#1B1F26'),'--line':hexMix(ex.c1,d-.15,'#2A2F38')}; if(acc){ vars['--gold']=hexMix(acc,.35,ex.c1); vars['--gold2']=hexMix(acc,.15,'#FFFFFF'); }
+      COSM.theme.push({id,name:[`Teinte · ${low}`,`Argenté · ${low}`,`Doré · ${low}`,`Glacé · ${low}`][t],cond,rar,badge,vars}); }
+  }
 }
-const perfReward=(ex,i)=>['Petit lot complet : contour Bronze terne, titre Apprenti, cadre Fil de bronze, motif discret, thème Teinte','Titre '+ex.a,'Contour '+ex.o,(ex.d[0]==='cadre'?'Cadre ':'Motif ')+ex.d[1]+(ex.d[0]==='cadre'?' animé':''),'Thème '+ex.l][i];
+const perfReward=(ex,i)=>{ const T=TIER_STYLE[i]; const items=['contour','titre','cadre','motif','theme'].map(k=>{ const it=COSM[k].find(x=>x.badge===perfId(ex,i)); return it?({contour:'contour ',titre:'titre ',cadre:'cadre ',motif:'motif ',theme:'thème '}[k])+it.name:null; }).filter(Boolean); return `Lot ${T.n} : ${items.join(', ')}`; };
 // badges : un par palier, acquis pour toujours, hors compte des 96 défis
 function perfBadges(p){ const out=[]; for(const ex of PERF){ const best=perfBest(p,ex); for(let i=0;i<5;i++){ const g=PERF_GRADES[i][0]; out.push({id:perfId(ex,i),perf:true,grade:g,level:i,ex:ex.key,rar:PERF_RAR[g],name:`${ex.name} · ${perfGradeLabel(i)}`,desc:perfCond(ex,ex.tiers[i]),icon:ex.icon,color:TIERS[g].accent,ok:perfMeets(ex,best,i),reward:perfReward(ex,i)}); } } return out; }
 // saisie : parse « 4:30 », « 4 min 30 », « 270 »
@@ -721,7 +741,7 @@ function snapshotOf(d){ const s={profiles:{},weighins:{},badges:new Set(),pronos
   for(const key of Object.keys(d.comments||{})) for(const c of d.comments[key]) s.comments[c.id]=JSON.stringify(Object.assign({key},c));
   s.claims={}; for(const c of (d.claims||[])) s.claims[c.id]=JSON.stringify(claimRow(c));
   s.reglages=JSON.stringify({pesee:d.pesee,season:d.season,palmares:d.palmares}); return s; }
-const APP_VERSION='20261014221411';
+const APP_VERSION='20261014222126';
 function versionCheck(){ if(!/github\.io$/.test(location.hostname)) return; fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(j=>{ if(j&&j.v&&j.v!==APP_VERSION){ if(!cloudFormOpen()&&!(CLOUD.saveTimer||CLOUD.saving)) location.reload(); else toast('Nouvelle version disponible : recharge l’appli quand tu as fini.'); } }).catch(()=>{}); }
 document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible'){ versionCheck(); if(CLOUD.on&&CLOUD.ready) cloudLoad(false); } });
 setInterval(versionCheck,5*60e3); setTimeout(versionCheck,4000);
