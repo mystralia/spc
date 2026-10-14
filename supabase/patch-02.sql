@@ -41,3 +41,7 @@ drop trigger if exists reclamations_guard_t on reclamations;
 create trigger reclamations_guard_t before update on reclamations for each row execute function reclamations_guard();
 
 alter publication supabase_realtime add table reclamations;
+
+-- Pronostics : on peut compléter après validation (les réponses déjà validées sont figées par l'appli)
+drop policy if exists "modifier prono" on pronostics;
+create policy "modifier prono" on pronostics for update to authenticated using (participant = me()) with check (participant = me());
