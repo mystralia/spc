@@ -701,7 +701,7 @@ function snapshotOf(d){ const s={profiles:{},weighins:{},badges:new Set(),pronos
   for(const key of Object.keys(d.comments||{})) for(const c of d.comments[key]) s.comments[c.id]=JSON.stringify(Object.assign({key},c));
   s.claims={}; for(const c of (d.claims||[])) s.claims[c.id]=JSON.stringify(claimRow(c));
   s.reglages=JSON.stringify({pesee:d.pesee,season:d.season,palmares:d.palmares}); return s; }
-const APP_VERSION='20261014220437';
+const APP_VERSION='20261014220746';
 function versionCheck(){ if(!/github\.io$/.test(location.hostname)) return; fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(j=>{ if(j&&j.v&&j.v!==APP_VERSION){ if(!cloudFormOpen()&&!(CLOUD.saveTimer||CLOUD.saving)) location.reload(); else toast('Nouvelle version disponible : recharge l’appli quand tu as fini.'); } }).catch(()=>{}); }
 document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible'){ versionCheck(); if(CLOUD.on&&CLOUD.ready) cloudLoad(false); } });
 setInterval(versionCheck,5*60e3); setTimeout(versionCheck,4000);
@@ -2553,6 +2553,7 @@ document.addEventListener('click',(e)=>{
   if(act==='preview-badge'){const p=profile(ME); if(p){ const was=isNewBadge(p,b.dataset.id); previewSheet(p,{badge:b.dataset.id}); if(was){ markSeen(p,b.dataset.id); render(); } } return;}
   if(act==='seen-all'){const p=profile(ME); if(p){ markAllSeen(p); render(); toast('Nouveautés vues.'); } return;}
   if(act==='machines-save'){const p=profile(ME); if(!p) return; p.machines=p.machines||{}; let n=0; const today=isoDay(new Date());
+    for(const m of (p.machineLog||[])) if(m.k&&m.v!=null&&(!p.machines[m.k]||p.machines[m.k].v<m.v)) p.machines[m.k]={v:m.v,date:m.date}; // la liste ne peut jamais perdre un max de l'historique
     for(const [k] of MACHINES()){ const el=document.getElementById('mc_'+k); if(!el) continue; const v=parseFloat(String(el.value).replace(',','.')); const o=machineOwn(p,k);
       if(isNaN(v)||v<=0) continue; /* champ vide : on ne touche à rien */ if(!o||o.v!==v){ p.machines[k]={v,date:today}; (p.machineLog=p.machineLog||[]).push({k,v,date:today}); n++; } }
     Store.save(DB); syncBadgeLog(); render(); toast(n?'Max enregistrés.':'Rien de nouveau.'); return;}
