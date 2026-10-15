@@ -452,7 +452,6 @@ const COSM={
   ],
   carte:[ // forme de la carte : découpe de l'enveloppe et de la carte (le contenu ne bouge pas)
     {id:'pointes',name:'Pointes',cond:'Toujours disponible',rar:'commun',unlock:()=>true},
-    {id:'bouclier',name:'Bouclier',cond:'Carte Argent, tant que tu tiens le grade',rar:'rare',badge:'argent',clip:'polygon(0 0,100% 0,100% 62%,88% 80%,50% 100%,12% 80%,0 62%)'},
     {id:'ecusson',name:'Écusson',cond:'Carte Or, tant que tu tiens le grade',rar:'epique',badge:'or',clipOuter:'path("M30 0 L228 0 Q258 0 258 30 L258 270 Q258 362 129 424 Q0 362 0 270 L0 30 Q0 0 30 0 Z")',clip:'path("M30 0 L220 0 Q250 0 250 30 L250 265 Q250 356 125 416 Q0 356 0 265 L0 30 Q0 0 30 0 Z")'},
     {id:'banniere',name:'Bannière',cond:'Défi Premier titre',rar:'rare',badge:'title1',clip:'polygon(0 0,100% 0,100% 100%,50% 88%,0 100%)'},
     {id:'octogone',name:'Octogone',cond:'Défi Habitué (trois pesées)',rar:'commun',badge:'streak3',clip:'polygon(14% 0,86% 0,100% 9%,100% 91%,86% 100%,14% 100%,0 91%,0 9%)'},
@@ -826,7 +825,7 @@ function snapshotOf(d){ const s={profiles:{},weighins:{},badges:new Set(),pronos
   for(const key of Object.keys(d.comments||{})) for(const c of d.comments[key]) s.comments[c.id]=JSON.stringify(Object.assign({key},c));
   s.claims={}; for(const c of (d.claims||[])) s.claims[c.id]=JSON.stringify(claimRow(c));
   s.reglages=JSON.stringify({pesee:d.pesee,season:d.season,palmares:d.palmares}); return s; }
-const APP_VERSION='20261015014436';
+const APP_VERSION='20261015014447';
 function versionCheck(){ if(!/github\.io$/.test(location.hostname)) return; fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(j=>{ if(j&&j.v&&j.v!==APP_VERSION){
   // on ne recharge qu'une fois par version annoncée : si le serveur sert encore l'ancienne page (cache), pas de boucle de rechargements
   let tried=null; try{ tried=sessionStorage.getItem('spc-reload-for'); }catch(_){}
@@ -1665,7 +1664,7 @@ const HELP_SECTIONS=[
   ['contour','Contour de carte',`<p>Le liseré autour de la carte. Du grade par défaut ; les autres se débloquent par des défis (commun à légendaire). Les légendaires tournent. Touche une case pour la fiche et le bouton Équiper.</p>`],
   ['titre','Titre honorifique',`<p>Un texte sous ton nom, gagné par les trophées et les défis. « Tenant de la ceinture » n’est disponible que tant que tu la portes.</p>`],
   ['cadre','Cadre d’avatar',`<p>Un anneau, une couronne, des flammes, des étincelles… autour de tes initiales ou de ta photo. Les cadres des paliers de performance ont une forme dessinée (clous, lauriers, pointes, flammes…), animée aux deux derniers paliers.</p>`],
-  ['forme-carte','Forme de la carte',`<p>La découpe de ta carte entière : pointes (celle de base), bouclier (Carte Argent), écusson (Carte Or), bannière (Premier titre), octogone (3 mois d’affilée), coins biseautés (Fiche complète), ticket (Présent), arche (Première pesée). Le contour suit la forme, le contenu ne bouge pas.</p>`],
+  ['forme-carte','Forme de la carte',`<p>La découpe de ta carte entière : pointes (celle de base), écusson (Carte Or), bannière (Premier titre), octogone (3 mois d’affilée), coins biseautés (Fiche complète), ticket (Présent), arche (Première pesée). Le contour suit la forme, le contenu ne bouge pas.</p>`],
   ['motif','Motif de fond',`<p>Une texture par-dessus la couleur du grade : carbone, marbre, rayures, holographique… Les épiques et légendaires sont animés.</p>`],
   ['theme','Thème de l’appli',`<p>Les couleurs de toute l’interface, sur ton téléphone. Les faciles sont volontairement un peu nuls (Gris béton, Rose bonbon, Mode gras) ; les beaux sont légendaires. « Doré » n’est disponible que tant que tu portes la ceinture.</p>`],
   ['etoiles','Étoiles',`<p>Une étoile sur la carte par mois avec la ceinture SPC, cinq maximum. Automatique, pas à équiper.</p>`],
@@ -2349,7 +2348,7 @@ function screenMoi(me){
     ${got.length?'':'<div class="muted" style="font-size:12px;margin-top:6px">Pas encore de badge débloqué.</div>'}</div>
   ${cosmPanel(me,'contour','Contour de carte','Le liseré autour de la carte, indépendant des couleurs du grade.')}
   ${cosmPanel(me,'titre','Titre honorifique','Un titre affiché sous ton nom, gagné avec les trophées.')}
-  ${cosmPanel(me,'carte','Forme de la carte','La découpe de ta carte : pointes, bouclier, écusson, bannière, octogone, coins biseautés, ticket, arche. Le contenu ne bouge pas.')}
+  ${cosmPanel(me,'carte','Forme de la carte','La découpe de ta carte : pointes, écusson, bannière, octogone, coins biseautés, ticket, arche. Le contenu ne bouge pas.')}
   ${cosmPanel(me,'cadre','Cadre d’avatar','Autour de tes initiales : anneau, couronne, flammes, éclair, ou ta photo de face.')}
   ${cosmPanel(me,'motif','Motif de fond','Une texture par-dessus la couleur de la carte. L’holographique est animé.')}
   ${cosmPanel(me,'theme','Thème de l’appli','Les couleurs de toute l’interface, sur ton téléphone.')}
