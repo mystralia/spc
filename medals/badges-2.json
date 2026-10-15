@@ -1,0 +1,263 @@
+[
+ {
+  "id": "bk1",
+  "name": "Bide King",
+  "desc": "Recevoir un premier BK",
+  "rar": "commun",
+  "color": "#FF6B6B",
+  "icon": "target",
+  "secret": false
+ },
+ {
+  "id": "bk2",
+  "name": "Roi du bide",
+  "desc": "Recevoir un deuxième BK",
+  "rar": "commun",
+  "color": "#FF6B6B",
+  "icon": "target",
+  "secret": false
+ },
+ {
+  "id": "fat5",
+  "name": "-5 kg de gras",
+  "desc": "Perdre 5 kg de masse grasse depuis le départ",
+  "rar": "rare",
+  "color": "#FF9F43",
+  "icon": "flame",
+  "secret": false
+ },
+ {
+  "id": "mus2",
+  "name": "+2 kg de muscle",
+  "desc": "Gagner 2 kg de masse musculaire depuis le départ",
+  "rar": "rare",
+  "color": "#FF6B6B",
+  "icon": "dumbbell",
+  "secret": false
+ },
+ {
+  "id": "waist5",
+  "name": "-5 cm de taille",
+  "desc": "Perdre 5 cm de tour de taille depuis le départ",
+  "rar": "rare",
+  "color": "#C3C8CE",
+  "icon": "ruler",
+  "secret": false
+ },
+ {
+  "id": "visc2",
+  "name": "Ventre dégonflé",
+  "desc": "Graisse viscérale en baisse de 2 points depuis le départ",
+  "rar": "rare",
+  "color": "#B89CFF",
+  "icon": "target",
+  "secret": false
+ },
+ {
+  "id": "plume1",
+  "name": "Poids plume",
+  "desc": "Recevoir le trophée Poids plume (plus grosse perte de gras du mois)",
+  "rar": "rare",
+  "color": "#4ECDC4",
+  "icon": "flame",
+  "secret": false
+ },
+ {
+  "id": "lourd1",
+  "name": "Poids lourd",
+  "desc": "Recevoir le trophée Poids lourd (plus grosse prise de muscle du mois)",
+  "rar": "rare",
+  "color": "#D9AE4A",
+  "icon": "dumbbell",
+  "secret": false
+ },
+ {
+  "id": "belt1",
+  "name": "Ceinture SPC",
+  "desc": "Prendre la ceinture au moins une fois",
+  "rar": "rare",
+  "color": "#D9AE4A",
+  "icon": "trophy",
+  "secret": false
+ },
+ {
+  "id": "title1",
+  "name": "Premier titre",
+  "desc": "Remporter un titre mensuel (progression)",
+  "rar": "rare",
+  "color": "#6BCB77",
+  "icon": "medal",
+  "secret": false
+ },
+ {
+  "id": "streak3",
+  "name": "3 mois d’affilée",
+  "desc": "Trois pesées mensuelles sans en rater",
+  "rar": "rare",
+  "color": "#5DA9FF",
+  "icon": "calendar",
+  "secret": false
+ },
+ {
+  "id": "nokfc3",
+  "name": "Trois mois propres",
+  "desc": "Trois pesées sans jamais recevoir le KFC",
+  "rar": "rare",
+  "color": "#6BCB77",
+  "icon": "flame",
+  "secret": false
+ },
+ {
+  "id": "fatstreak3",
+  "name": "En série",
+  "desc": "Trois mois de suite avec du gras en moins",
+  "rar": "rare",
+  "color": "#FF9F43",
+  "icon": "flame",
+  "secret": false
+ },
+ {
+  "id": "argent",
+  "name": "Carte Argent",
+  "desc": "Gras 20 % max",
+  "rar": "rare",
+  "color": "#B9BEC4",
+  "icon": "card",
+  "secret": false
+ },
+ {
+  "id": "title5",
+  "name": "Collectionneur",
+  "desc": "Remporter cinq titres mensuels en tout",
+  "rar": "rare",
+  "color": "#6BCB77",
+  "icon": "medal",
+  "secret": false
+ },
+ {
+  "id": "equ",
+  "name": "Bien proportionné",
+  "desc": "Équilibre à 90 ou plus",
+  "rar": "rare",
+  "color": "#4ECDC4",
+  "icon": "sym",
+  "secret": false
+ },
+ {
+  "id": "fat10",
+  "name": "-10 kg de gras",
+  "desc": "Perdre 10 kg de masse grasse depuis le départ",
+  "rar": "epique",
+  "color": "#FF6B6B",
+  "icon": "flame",
+  "secret": false
+ },
+ {
+  "id": "mus5",
+  "name": "+5 kg de muscle",
+  "desc": "Gagner 5 kg de masse musculaire depuis le départ",
+  "rar": "epique",
+  "color": "#FF6B6B",
+  "icon": "dumbbell",
+  "secret": false
+ },
+ {
+  "id": "taille10",
+  "name": "-10 cm de taille",
+  "desc": "Perdre 10 cm de tour de taille depuis le départ",
+  "rar": "epique",
+  "color": "#C3C8CE",
+  "icon": "ruler",
+  "secret": false
+ },
+ {
+  "id": "under15",
+  "name": "Sous les 15 %",
+  "desc": "Passer sous 15 % de masse grasse",
+  "rar": "epique",
+  "color": "#FF9F43",
+  "icon": "flame",
+  "secret": false
+ },
+ {
+  "id": "belt3",
+  "name": "Triple tenant",
+  "desc": "Trois mois avec la ceinture SPC",
+  "rar": "epique",
+  "color": "#D9AE4A",
+  "icon": "trophy",
+  "secret": false
+ },
+ {
+  "id": "plume3",
+  "name": "Triple plume",
+  "desc": "Trois trophées Poids plume",
+  "rar": "epique",
+  "color": "#4ECDC4",
+  "icon": "flame",
+  "secret": false
+ },
+ {
+  "id": "lourd3",
+  "name": "Triple lourd",
+  "desc": "Trois trophées Poids lourd",
+  "rar": "epique",
+  "color": "#D9AE4A",
+  "icon": "dumbbell",
+  "secret": false
+ },
+ {
+  "id": "bigthree",
+  "name": "Colosse",
+  "desc": "Plus grosse prise de muscle aux bras et aux jambes le même mois",
+  "rar": "epique",
+  "color": "#B89CFF",
+  "icon": "dumbbell",
+  "secret": false
+ },
+ {
+  "id": "streak6",
+  "name": "6 mois d’affilée",
+  "desc": "Six pesées mensuelles sans en rater",
+  "rar": "epique",
+  "color": "#5DA9FF",
+  "icon": "calendar",
+  "secret": false
+ },
+ {
+  "id": "goalall3",
+  "name": "Chirurgical",
+  "desc": "Tous ses objectifs atteints trois pesées de suite (5 minimum)",
+  "rar": "epique",
+  "color": "#6BCB77",
+  "icon": "target",
+  "secret": false
+ },
+ {
+  "id": "nokfc",
+  "name": "Jamais de KFC",
+  "desc": "Six pesées sans jamais recevoir le KFC",
+  "rar": "epique",
+  "color": "#6BCB77",
+  "icon": "flame",
+  "secret": false
+ },
+ {
+  "id": "or",
+  "name": "Carte Or",
+  "desc": "Note 65, gras 15 % max, indice musculaire 20, viscérale 7 max",
+  "rar": "epique",
+  "color": "#D9AE4A",
+  "icon": "card",
+  "secret": false
+ },
+ {
+  "id": "top25fat",
+  "name": "Top 25 % sèche",
+  "desc": "Dans les 25 % d’hommes de son âge les plus secs",
+  "rar": "epique",
+  "color": "#FF9F43",
+  "icon": "flame",
+  "secret": false
+ }
+]

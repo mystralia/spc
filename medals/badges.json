@@ -1,0 +1,1419 @@
+{
+ "badges": [
+  {
+   "id": "first",
+   "name": "Première pesée",
+   "desc": "Monter sur la balance une première fois",
+   "rar": "commun",
+   "color": "#5DA9FF",
+   "icon": "weight",
+   "secret": false
+  },
+  {
+   "id": "profil",
+   "name": "Fiche complète",
+   "desc": "Taille, date de naissance et photo de profil renseignées",
+   "rar": "commun",
+   "color": "#5DA9FF",
+   "icon": "users",
+   "secret": false
+  },
+  {
+   "id": "selfie",
+   "name": "Visage découvert",
+   "desc": "Mettre sa photo de profil sur sa carte",
+   "rar": "commun",
+   "color": "#4ECDC4",
+   "icon": "users",
+   "secret": false
+  },
+  {
+   "id": "goalset",
+   "name": "Cibles fixées",
+   "desc": "Valider ses premiers objectifs",
+   "rar": "commun",
+   "color": "#D9AE4A",
+   "icon": "target",
+   "secret": false
+  },
+  {
+   "id": "dispo1",
+   "name": "Présent à l’appel",
+   "desc": "Renseigner ses dispos avant une pesée",
+   "rar": "commun",
+   "color": "#5DA9FF",
+   "icon": "calendar",
+   "secret": false
+  },
+  {
+   "id": "ruban",
+   "name": "Mètre ruban complet",
+   "desc": "Les sept tours remplis sur une pesée",
+   "rar": "commun",
+   "color": "#C3C8CE",
+   "icon": "ruler",
+   "secret": false
+  },
+  {
+   "id": "egym",
+   "name": "Écrans relevés",
+   "desc": "Les performances EGYM relevées sur une pesée",
+   "rar": "commun",
+   "color": "#FFD93D",
+   "icon": "zap",
+   "secret": false
+  },
+  {
+   "id": "photos",
+   "name": "Sous tous les angles",
+   "desc": "Face, profil et dos sur une même pesée",
+   "rar": "commun",
+   "color": "#B89CFF",
+   "icon": "users",
+   "secret": false
+  },
+  {
+   "id": "tanita",
+   "name": "Analyse complète",
+   "desc": "Une pesée Tanita avec le détail par zone",
+   "rar": "commun",
+   "color": "#4ECDC4",
+   "icon": "weight",
+   "secret": false
+  },
+  {
+   "id": "firstloss",
+   "name": "Première perte",
+   "desc": "Un premier mois où le gras baisse",
+   "rar": "commun",
+   "color": "#FF9F43",
+   "icon": "flame",
+   "secret": false
+  },
+  {
+   "id": "fat1",
+   "name": "-1 kg de gras",
+   "desc": "Perdre 1 kg de masse grasse depuis le départ",
+   "rar": "commun",
+   "color": "#FF9F43",
+   "icon": "flame",
+   "secret": false
+  },
+  {
+   "id": "mus05",
+   "name": "+0,5 kg de muscle",
+   "desc": "Gagner 0,5 kg de masse musculaire depuis le départ",
+   "rar": "commun",
+   "color": "#FF6B6B",
+   "icon": "dumbbell",
+   "secret": false
+  },
+  {
+   "id": "waist2",
+   "name": "-2 cm de taille",
+   "desc": "Perdre 2 cm de tour de taille depuis le départ",
+   "rar": "commun",
+   "color": "#C3C8CE",
+   "icon": "ruler",
+   "secret": false
+  },
+  {
+   "id": "goal1",
+   "name": "Objectif atteint",
+   "desc": "Atteindre un objectif fixé avant une pesée",
+   "rar": "commun",
+   "color": "#D9AE4A",
+   "icon": "target",
+   "secret": false
+  },
+  {
+   "id": "obj2m",
+   "name": "Doublé",
+   "desc": "Atteindre 2 objectifs lors d’une seule pesée",
+   "rar": "commun",
+   "color": "#D9AE4A",
+   "icon": "target",
+   "secret": false
+  },
+  {
+   "id": "obj5m",
+   "name": "Razzia",
+   "desc": "Atteindre 5 objectifs lors d’une seule pesée",
+   "rar": "commun",
+   "color": "#FFD93D",
+   "icon": "target",
+   "secret": false
+  },
+  {
+   "id": "goalall",
+   "name": "Tous les objectifs",
+   "desc": "Atteindre tous ses objectifs d’une pesée, avec au moins 5 fixés",
+   "rar": "commun",
+   "color": "#6BCB77",
+   "icon": "target",
+   "secret": false
+  },
+  {
+   "id": "zero",
+   "name": "Zéro pointé",
+   "desc": "Une pesée avec au moins 3 objectifs fixés et aucun atteint",
+   "rar": "commun",
+   "color": "#9AA1A9",
+   "icon": "target",
+   "secret": false
+  },
+  {
+   "id": "ivrogne",
+   "name": "Paroles en l’air",
+   "desc": "Trois pesées d’affilée sans atteindre aucun objectif (3 fixés minimum)",
+   "rar": "commun",
+   "color": "#9AA1A9",
+   "icon": "target",
+   "secret": false
+  },
+  {
+   "id": "streak2",
+   "name": "Deux de suite",
+   "desc": "Deux pesées mensuelles d’affilée",
+   "rar": "commun",
+   "color": "#5DA9FF",
+   "icon": "calendar",
+   "secret": false
+  },
+  {
+   "id": "dispo3",
+   "name": "Toujours là",
+   "desc": "Répondre aux dispos trois pesées de suite",
+   "rar": "commun",
+   "color": "#5DA9FF",
+   "icon": "calendar",
+   "secret": false
+  },
+  {
+   "id": "reveal",
+   "name": "Jour J",
+   "desc": "Ouvrir sa nouvelle carte le jour de la révélation",
+   "rar": "commun",
+   "color": "#D9AE4A",
+   "icon": "card",
+   "secret": false
+  },
+  {
+   "id": "recomp",
+   "name": "Recomposition",
+   "desc": "Gras en baisse et muscle en hausse le même mois",
+   "rar": "commun",
+   "color": "#4ECDC4",
+   "icon": "sym",
+   "secret": false
+  },
+  {
+   "id": "sym",
+   "name": "Symétrie parfaite",
+   "desc": "Moins de 0,5 point d’écart gauche-droite partout",
+   "rar": "commun",
+   "color": "#4ECDC4",
+   "icon": "sym",
+   "secret": false
+  },
+  {
+   "id": "avantapres",
+   "name": "Avant · après",
+   "desc": "Deux mois de photos de face",
+   "rar": "commun",
+   "color": "#B89CFF",
+   "icon": "users",
+   "secret": false
+  },
+  {
+   "id": "dossier",
+   "name": "Dossier complet",
+   "desc": "Tanita, mètre ruban, photos et EGYM le même mois",
+   "rar": "commun",
+   "color": "#D9AE4A",
+   "icon": "card",
+   "secret": false
+  },
+  {
+   "id": "kfc1",
+   "name": "Poulet du mois",
+   "desc": "Recevoir un premier KFC",
+   "rar": "commun",
+   "color": "#FF9F43",
+   "icon": "flame",
+   "secret": false
+  },
+  {
+   "id": "kfc2",
+   "name": "Récidive",
+   "desc": "Recevoir un deuxième KFC",
+   "rar": "commun",
+   "color": "#FF9F43",
+   "icon": "flame",
+   "secret": false
+  },
+  {
+   "id": "bk1",
+   "name": "Bide King",
+   "desc": "Recevoir un premier BK",
+   "rar": "commun",
+   "color": "#FF6B6B",
+   "icon": "target",
+   "secret": false
+  },
+  {
+   "id": "bk2",
+   "name": "Roi du bide",
+   "desc": "Recevoir un deuxième BK",
+   "rar": "commun",
+   "color": "#FF6B6B",
+   "icon": "target",
+   "secret": false
+  },
+  {
+   "id": "fat5",
+   "name": "-5 kg de gras",
+   "desc": "Perdre 5 kg de masse grasse depuis le départ",
+   "rar": "rare",
+   "color": "#FF9F43",
+   "icon": "flame",
+   "secret": false
+  },
+  {
+   "id": "mus2",
+   "name": "+2 kg de muscle",
+   "desc": "Gagner 2 kg de masse musculaire depuis le départ",
+   "rar": "rare",
+   "color": "#FF6B6B",
+   "icon": "dumbbell",
+   "secret": false
+  },
+  {
+   "id": "waist5",
+   "name": "-5 cm de taille",
+   "desc": "Perdre 5 cm de tour de taille depuis le départ",
+   "rar": "rare",
+   "color": "#C3C8CE",
+   "icon": "ruler",
+   "secret": false
+  },
+  {
+   "id": "visc2",
+   "name": "Ventre dégonflé",
+   "desc": "Graisse viscérale en baisse de 2 points depuis le départ",
+   "rar": "rare",
+   "color": "#B89CFF",
+   "icon": "target",
+   "secret": false
+  },
+  {
+   "id": "plume1",
+   "name": "Poids plume",
+   "desc": "Recevoir le trophée Poids plume (plus grosse perte de gras du mois)",
+   "rar": "rare",
+   "color": "#4ECDC4",
+   "icon": "flame",
+   "secret": false
+  },
+  {
+   "id": "lourd1",
+   "name": "Poids lourd",
+   "desc": "Recevoir le trophée Poids lourd (plus grosse prise de muscle du mois)",
+   "rar": "rare",
+   "color": "#D9AE4A",
+   "icon": "dumbbell",
+   "secret": false
+  },
+  {
+   "id": "belt1",
+   "name": "Ceinture SPC",
+   "desc": "Prendre la ceinture au moins une fois",
+   "rar": "rare",
+   "color": "#D9AE4A",
+   "icon": "trophy",
+   "secret": false
+  },
+  {
+   "id": "title1",
+   "name": "Premier titre",
+   "desc": "Remporter un titre mensuel (progression)",
+   "rar": "rare",
+   "color": "#6BCB77",
+   "icon": "medal",
+   "secret": false
+  },
+  {
+   "id": "streak3",
+   "name": "3 mois d’affilée",
+   "desc": "Trois pesées mensuelles sans en rater",
+   "rar": "rare",
+   "color": "#5DA9FF",
+   "icon": "calendar",
+   "secret": false
+  },
+  {
+   "id": "nokfc3",
+   "name": "Trois mois propres",
+   "desc": "Trois pesées sans jamais recevoir le KFC",
+   "rar": "rare",
+   "color": "#6BCB77",
+   "icon": "flame",
+   "secret": false
+  },
+  {
+   "id": "fatstreak3",
+   "name": "En série",
+   "desc": "Trois mois de suite avec du gras en moins",
+   "rar": "rare",
+   "color": "#FF9F43",
+   "icon": "flame",
+   "secret": false
+  },
+  {
+   "id": "argent",
+   "name": "Carte Argent",
+   "desc": "Gras 20 % max",
+   "rar": "rare",
+   "color": "#B9BEC4",
+   "icon": "card",
+   "secret": false
+  },
+  {
+   "id": "title5",
+   "name": "Collectionneur",
+   "desc": "Remporter cinq titres mensuels en tout",
+   "rar": "rare",
+   "color": "#6BCB77",
+   "icon": "medal",
+   "secret": false
+  },
+  {
+   "id": "equ",
+   "name": "Bien proportionné",
+   "desc": "Équilibre à 90 ou plus",
+   "rar": "rare",
+   "color": "#4ECDC4",
+   "icon": "sym",
+   "secret": false
+  },
+  {
+   "id": "fat10",
+   "name": "-10 kg de gras",
+   "desc": "Perdre 10 kg de masse grasse depuis le départ",
+   "rar": "epique",
+   "color": "#FF6B6B",
+   "icon": "flame",
+   "secret": false
+  },
+  {
+   "id": "mus5",
+   "name": "+5 kg de muscle",
+   "desc": "Gagner 5 kg de masse musculaire depuis le départ",
+   "rar": "epique",
+   "color": "#FF6B6B",
+   "icon": "dumbbell",
+   "secret": false
+  },
+  {
+   "id": "taille10",
+   "name": "-10 cm de taille",
+   "desc": "Perdre 10 cm de tour de taille depuis le départ",
+   "rar": "epique",
+   "color": "#C3C8CE",
+   "icon": "ruler",
+   "secret": false
+  },
+  {
+   "id": "under15",
+   "name": "Sous les 15 %",
+   "desc": "Passer sous 15 % de masse grasse",
+   "rar": "epique",
+   "color": "#FF9F43",
+   "icon": "flame",
+   "secret": false
+  },
+  {
+   "id": "belt3",
+   "name": "Triple tenant",
+   "desc": "Trois mois avec la ceinture SPC",
+   "rar": "epique",
+   "color": "#D9AE4A",
+   "icon": "trophy",
+   "secret": false
+  },
+  {
+   "id": "plume3",
+   "name": "Triple plume",
+   "desc": "Trois trophées Poids plume",
+   "rar": "epique",
+   "color": "#4ECDC4",
+   "icon": "flame",
+   "secret": false
+  },
+  {
+   "id": "lourd3",
+   "name": "Triple lourd",
+   "desc": "Trois trophées Poids lourd",
+   "rar": "epique",
+   "color": "#D9AE4A",
+   "icon": "dumbbell",
+   "secret": false
+  },
+  {
+   "id": "bigthree",
+   "name": "Colosse",
+   "desc": "Plus grosse prise de muscle aux bras et aux jambes le même mois",
+   "rar": "epique",
+   "color": "#B89CFF",
+   "icon": "dumbbell",
+   "secret": false
+  },
+  {
+   "id": "streak6",
+   "name": "6 mois d’affilée",
+   "desc": "Six pesées mensuelles sans en rater",
+   "rar": "epique",
+   "color": "#5DA9FF",
+   "icon": "calendar",
+   "secret": false
+  },
+  {
+   "id": "goalall3",
+   "name": "Chirurgical",
+   "desc": "Tous ses objectifs atteints trois pesées de suite (5 minimum)",
+   "rar": "epique",
+   "color": "#6BCB77",
+   "icon": "target",
+   "secret": false
+  },
+  {
+   "id": "nokfc",
+   "name": "Jamais de KFC",
+   "desc": "Six pesées sans jamais recevoir le KFC",
+   "rar": "epique",
+   "color": "#6BCB77",
+   "icon": "flame",
+   "secret": false
+  },
+  {
+   "id": "or",
+   "name": "Carte Or",
+   "desc": "Note 65, gras 15 % max, indice musculaire 20, viscérale 7 max",
+   "rar": "epique",
+   "color": "#D9AE4A",
+   "icon": "card",
+   "secret": false
+  },
+  {
+   "id": "top25fat",
+   "name": "Top 25 % sèche",
+   "desc": "Dans les 25 % d’hommes de son âge les plus secs",
+   "rar": "epique",
+   "color": "#FF9F43",
+   "icon": "flame",
+   "secret": false
+  },
+  {
+   "id": "top25ffmi",
+   "name": "Top 25 % muscle",
+   "desc": "Dans les 25 % les plus musclés (indice musculaire 21)",
+   "rar": "epique",
+   "color": "#FF6B6B",
+   "icon": "dumbbell",
+   "secret": false
+  },
+  {
+   "id": "top25visc",
+   "name": "Top 25 % viscérale",
+   "desc": "Graisse viscérale à 6 ou moins",
+   "rar": "epique",
+   "color": "#B89CFF",
+   "icon": "target",
+   "secret": false
+  },
+  {
+   "id": "top25waist",
+   "name": "Top 25 % taille",
+   "desc": "Tour de taille sous 46 % de sa taille",
+   "rar": "epique",
+   "color": "#C3C8CE",
+   "icon": "ruler",
+   "secret": false
+  },
+  {
+   "id": "visc",
+   "name": "Ventre sain",
+   "desc": "Graisse viscérale à 5 ou moins",
+   "rar": "epique",
+   "color": "#B89CFF",
+   "icon": "target",
+   "secret": false
+  },
+  {
+   "id": "diamant",
+   "name": "Diamant",
+   "desc": "Note 80, gras 12 % max, indice musculaire 21, viscérale 4 max",
+   "rar": "legendaire",
+   "color": "#7FE3FF",
+   "icon": "card",
+   "secret": false
+  },
+  {
+   "id": "leg",
+   "name": "Légende",
+   "desc": "Note 85, gras 10 % max, indice musculaire 22, viscérale 2 max",
+   "rar": "legendaire",
+   "color": "#B89CFF",
+   "icon": "card",
+   "secret": false
+  },
+  {
+   "id": "under10",
+   "name": "Sous les 10 %",
+   "desc": "Passer sous 10 % de masse grasse",
+   "rar": "legendaire",
+   "color": "#FF9F43",
+   "icon": "flame",
+   "secret": false
+  },
+  {
+   "id": "ffmi23",
+   "name": "Titan",
+   "desc": "Indice musculaire 23 ou plus",
+   "rar": "legendaire",
+   "color": "#FF6B6B",
+   "icon": "dumbbell",
+   "secret": false
+  },
+  {
+   "id": "champ",
+   "name": "Champion de saison",
+   "desc": "Finir premier du classement progression à la clôture d’une saison",
+   "rar": "legendaire",
+   "color": "#D9AE4A",
+   "icon": "trophy",
+   "secret": false
+  },
+  {
+   "id": "champ2",
+   "name": "Dynastie",
+   "desc": "Gagner deux saisons",
+   "rar": "legendaire",
+   "color": "#D9AE4A",
+   "icon": "trophy",
+   "secret": false
+  },
+  {
+   "id": "belt6",
+   "name": "Ceinture à vie",
+   "desc": "Six mois avec la ceinture SPC",
+   "rar": "legendaire",
+   "color": "#D9AE4A",
+   "icon": "trophy",
+   "secret": false
+  },
+  {
+   "id": "perfect",
+   "name": "Invaincu",
+   "desc": "Champion de saison sans jamais lâcher la ceinture",
+   "rar": "legendaire",
+   "color": "#F6DE96",
+   "icon": "trophy",
+   "secret": false
+  },
+  {
+   "id": "fat20",
+   "name": "-20 kg de gras",
+   "desc": "Perdre 20 kg de masse grasse depuis le départ",
+   "rar": "legendaire",
+   "color": "#FF6B6B",
+   "icon": "flame",
+   "secret": false
+  },
+  {
+   "id": "mus10",
+   "name": "+10 kg de muscle",
+   "desc": "Gagner 10 kg de masse musculaire depuis le départ",
+   "rar": "legendaire",
+   "color": "#FF6B6B",
+   "icon": "dumbbell",
+   "secret": false
+  },
+  {
+   "id": "waist15",
+   "name": "-15 cm de taille",
+   "desc": "Perdre 15 cm de tour de taille depuis le départ",
+   "rar": "legendaire",
+   "color": "#C3C8CE",
+   "icon": "ruler",
+   "secret": false
+  },
+  {
+   "id": "ascension",
+   "name": "Ascension",
+   "desc": "Partir Bronze et atteindre la carte Or",
+   "rar": "legendaire",
+   "color": "#D9AE4A",
+   "icon": "card",
+   "secret": false
+  },
+  {
+   "id": "top10fat",
+   "name": "Top 10 % sèche",
+   "desc": "Dans les 10 % d’hommes de son âge les plus secs",
+   "rar": "legendaire",
+   "color": "#FF9F43",
+   "icon": "flame",
+   "secret": false
+  },
+  {
+   "id": "top10ffmi",
+   "name": "Top 10 % muscle",
+   "desc": "Dans les 10 % les plus musclés (indice musculaire 22)",
+   "rar": "legendaire",
+   "color": "#FF6B6B",
+   "icon": "dumbbell",
+   "secret": false
+  },
+  {
+   "id": "streak12",
+   "name": "Un an d’affilée",
+   "desc": "Douze pesées mensuelles sans en rater",
+   "rar": "legendaire",
+   "color": "#5DA9FF",
+   "icon": "calendar",
+   "secret": false
+  },
+  {
+   "id": "compare",
+   "name": "Face à face",
+   "desc": "Comparer deux participants",
+   "rar": "commun",
+   "color": "#4ECDC4",
+   "icon": "sym",
+   "secret": false
+  },
+  {
+   "id": "curieux",
+   "name": "Curieux",
+   "desc": "Regarder la carte de chaque participant",
+   "rar": "commun",
+   "color": "#5DA9FF",
+   "icon": "users",
+   "secret": false
+  },
+  {
+   "id": "share",
+   "name": "Partageur",
+   "desc": "Partager sa carte",
+   "rar": "commun",
+   "color": "#B89CFF",
+   "icon": "users",
+   "secret": false
+  },
+  {
+   "id": "present",
+   "name": "Présent",
+   "desc": "Être dispo le jour de la pesée fixée, et s’y peser",
+   "rar": "commun",
+   "color": "#6BCB77",
+   "icon": "calendar",
+   "secret": false
+  },
+  {
+   "id": "armfat3",
+   "name": "Affûté",
+   "desc": "Gras d’un bras ou d’une jambe en baisse de 3 points depuis le départ",
+   "rar": "rare",
+   "color": "#FF9F43",
+   "icon": "flame",
+   "secret": false
+  },
+  {
+   "id": "eau58",
+   "name": "Hydraté",
+   "desc": "Eau corporelle à 58 % ou plus",
+   "rar": "rare",
+   "color": "#4ECDC4",
+   "icon": "droplet",
+   "secret": false
+  },
+  {
+   "id": "metaAge",
+   "name": "Plus jeune que son âge",
+   "desc": "Âge métabolique Tanita sous l’âge réel",
+   "rar": "rare",
+   "color": "#5DA9FF",
+   "icon": "calendar",
+   "secret": false
+  },
+  {
+   "id": "seg15",
+   "name": "Zone sèche",
+   "desc": "Une zone du corps sous 15 % de gras",
+   "rar": "rare",
+   "color": "#FF9F43",
+   "icon": "flame",
+   "secret": false
+  },
+  {
+   "id": "presse25",
+   "name": "Presse 2,5 ×",
+   "desc": "Presse à cuisses EGYM à 2,5 fois son poids de corps",
+   "rar": "epique",
+   "color": "#FF6B6B",
+   "icon": "dumbbell",
+   "secret": false
+  },
+  {
+   "id": "tirage15",
+   "name": "Tirage 1,5 ×",
+   "desc": "Tirage vertical EGYM à 1,5 fois son poids de corps",
+   "rar": "epique",
+   "color": "#FF6B6B",
+   "icon": "dumbbell",
+   "secret": false
+  },
+  {
+   "id": "cardio10",
+   "name": "Cœur de jeune",
+   "desc": "Âge cardio EGYM dix ans sous l’âge réel",
+   "rar": "epique",
+   "color": "#6BCB77",
+   "icon": "heart",
+   "secret": false
+  },
+  {
+   "id": "egymUp",
+   "name": "Tout en hausse",
+   "desc": "Toutes les performances EGYM en hausse d’une pesée à l’autre",
+   "rar": "epique",
+   "color": "#FFD93D",
+   "icon": "zap",
+   "secret": false
+  },
+  {
+   "id": "diamant3",
+   "name": "Diamant brut",
+   "desc": "Carte Diamant ou mieux trois pesées de suite",
+   "rar": "legendaire",
+   "color": "#7FE3FF",
+   "icon": "card",
+   "secret": false
+  },
+  {
+   "id": "alltitles",
+   "name": "Grand chelem",
+   "desc": "Les trois titres de progression (bras, jambes, tronc) le même mois",
+   "rar": "legendaire",
+   "color": "#F6DE96",
+   "icon": "medal",
+   "secret": false
+  },
+  {
+   "id": "streak24",
+   "name": "Deux ans",
+   "desc": "Vingt-quatre pesées mensuelles sans en rater",
+   "rar": "legendaire",
+   "color": "#5DA9FF",
+   "icon": "calendar",
+   "secret": false
+  },
+  {
+   "id": "badges50",
+   "name": "Panthéon",
+   "desc": "Débloquer 50 badges",
+   "rar": "legendaire",
+   "color": "#F6DE96",
+   "icon": "medal",
+   "secret": false
+  },
+  {
+   "id": "badges30",
+   "name": "Trésorier",
+   "desc": "Débloquer 30 badges",
+   "rar": "legendaire",
+   "color": "#F6DE96",
+   "icon": "medal",
+   "secret": false
+  },
+  {
+   "id": "voyant",
+   "name": "Voyant",
+   "desc": "Les trois objectifs de quelqu’un (poids, gras, muscle) devinés juste le même mois",
+   "rar": "rare",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": false
+  },
+  {
+   "id": "nostradamus",
+   "name": "Nostradamus",
+   "desc": "Meilleur pronostiqueur trois mois de suite",
+   "rar": "epique",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": false
+  },
+  {
+   "id": "boulefelee",
+   "name": "Boule fêlée",
+   "desc": "Dernier des pronostiqueurs deux fois",
+   "rar": "commun",
+   "color": "#9AA1A9",
+   "icon": "eye",
+   "secret": false
+  },
+  {
+   "id": "s_lecteur",
+   "name": "Lecteur",
+   "desc": "Ouvrir l’aide « ? » de toutes les pages",
+   "rar": "rare",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": true
+  },
+  {
+   "id": "s_aube",
+   "name": "Lève-tôt",
+   "desc": "Ouvrir l’appli entre 4 h et 6 h 30",
+   "rar": "commun",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": true
+  },
+  {
+   "id": "s_nuit",
+   "name": "Noctambule",
+   "desc": "Ouvrir l’appli entre minuit et 4 h",
+   "rar": "commun",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": true
+  },
+  {
+   "id": "s_curieux",
+   "name": "Curieux avant tout",
+   "desc": "Le jour J, regarder la carte de quelqu’un d’autre avant la sienne",
+   "rar": "rare",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": true
+  },
+  {
+   "id": "s_doigts",
+   "name": "Dix doigts",
+   "desc": "Taper dix fois de suite sur le logo",
+   "rar": "commun",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": true
+  },
+  {
+   "id": "s_anniv",
+   "name": "Bougies",
+   "desc": "Ouvrir l’appli le jour de son anniversaire",
+   "rar": "rare",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": true
+  },
+  {
+   "id": "s_pile",
+   "name": "Pile poil",
+   "desc": "Une note globale de 50 ou de 77 pile",
+   "rar": "rare",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": true
+  },
+  {
+   "id": "s_fidele",
+   "name": "Fidèle",
+   "desc": "Ouvrir l’appli chaque jour de la semaine qui précède la pesée, jour J compris",
+   "rar": "epique",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": true
+  },
+  {
+   "id": "s_espion",
+   "name": "Espion",
+   "desc": "Ouvrir la carte du même participant cinq jours différents",
+   "rar": "rare",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": true
+  },
+  {
+   "id": "s_comptable",
+   "name": "Comptable",
+   "desc": "Ouvrir l’onglet Évolution dix jours différents",
+   "rar": "rare",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": true
+  },
+  {
+   "id": "s_chrono",
+   "name": "À l’heure",
+   "desc": "Ouvrir l’appli dans les deux minutes autour de l’heure de révélation",
+   "rar": "epique",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": true
+  },
+  {
+   "id": "s_v13",
+   "name": "Vendredi 13",
+   "desc": "Ouvrir l’appli un vendredi 13",
+   "rar": "commun",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": true
+  },
+  {
+   "id": "s_nouvelan",
+   "name": "Bonne année",
+   "desc": "Ouvrir l’appli un 1er janvier",
+   "rar": "commun",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": true
+  },
+  {
+   "id": "s_photo",
+   "name": "Photographe",
+   "desc": "Changer trois fois sa photo de profil",
+   "rar": "commun",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": true
+  },
+  {
+   "id": "s_mot",
+   "name": "Premier mot",
+   "desc": "Écrire un premier commentaire",
+   "rar": "commun",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": true
+  },
+  {
+   "id": "s_bavard",
+   "name": "Bavard",
+   "desc": "Écrire dix commentaires",
+   "rar": "rare",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": true
+  },
+  {
+   "id": "s_langue",
+   "name": "Mauvaise langue",
+   "desc": "Pronostiquer que tous les autres reprennent du gras",
+   "rar": "rare",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": true
+  },
+  {
+   "id": "s_optimiste",
+   "name": "Optimiste",
+   "desc": "Pronostiquer que tous les autres perdent du gras",
+   "rar": "commun",
+   "color": "#B89CFF",
+   "icon": "eye",
+   "secret": true
+  }
+ ],
+ "exercises": [
+  {
+   "key": "pompes",
+   "name": "Pompes",
+   "fam": "corps",
+   "c1": "#FF6B6B",
+   "c2": "#FFC4C4",
+   "icon": "dumbbell",
+   "unit": "d’affilée"
+  },
+  {
+   "key": "tractions",
+   "name": "Tractions pronation",
+   "fam": "corps",
+   "c1": "#5DA9FF",
+   "c2": "#D6E8FF",
+   "icon": "dumbbell",
+   "unit": "d’affilée"
+  },
+  {
+   "key": "tractsup",
+   "name": "Tractions supination",
+   "fam": "corps",
+   "c1": "#4ECDC4",
+   "c2": "#CFF5F0",
+   "icon": "dumbbell",
+   "unit": "d’affilée"
+  },
+  {
+   "key": "gainage",
+   "name": "Gainage",
+   "fam": "corps",
+   "c1": "#9AA1A9",
+   "c2": "#E9ECEF",
+   "icon": "sym",
+   "unit": "planche"
+  },
+  {
+   "key": "squats",
+   "name": "Squats",
+   "fam": "corps",
+   "c1": "#6BCB77",
+   "c2": "#C9F2CE",
+   "icon": "dumbbell",
+   "unit": "d’affilée"
+  },
+  {
+   "key": "dips",
+   "name": "Dips",
+   "fam": "corps",
+   "c1": "#FF9F43",
+   "c2": "#FFD9A8",
+   "icon": "dumbbell",
+   "unit": "d’affilée"
+  },
+  {
+   "key": "pistol",
+   "name": "Pistol squats",
+   "fam": "corps",
+   "c1": "#4ECDC4",
+   "c2": "#D9F5EA",
+   "icon": "dumbbell",
+   "unit": "par jambe"
+  },
+  {
+   "key": "burpees",
+   "name": "Burpees",
+   "fam": "corps",
+   "c1": "#FF6B6B",
+   "c2": "#FFD2D2",
+   "icon": "flame",
+   "unit": "d’affilée"
+  },
+  {
+   "key": "muscleup",
+   "name": "Muscle-ups",
+   "fam": "corps",
+   "c1": "#B89CFF",
+   "c2": "#E6DAFF",
+   "icon": "zap",
+   "unit": "d’affilée"
+  },
+  {
+   "key": "hang",
+   "name": "Suspension bras tendus",
+   "fam": "corps",
+   "c1": "#C3C8CE",
+   "c2": "#FFFFFF",
+   "icon": "target",
+   "unit": "tenue"
+  },
+  {
+   "key": "lsit",
+   "name": "L-sit",
+   "fam": "corps",
+   "c1": "#FFD93D",
+   "c2": "#FFF3B0",
+   "icon": "sym",
+   "unit": "tenue"
+  },
+  {
+   "key": "chaise",
+   "name": "Chaise contre le mur",
+   "fam": "corps",
+   "c1": "#E0A87A",
+   "c2": "#F7DCC4",
+   "icon": "sym",
+   "unit": "tenue"
+  },
+  {
+   "key": "gainlat",
+   "name": "Gainage latéral",
+   "fam": "corps",
+   "c1": "#9BD9C2",
+   "c2": "#D9F5EA",
+   "icon": "sym",
+   "unit": "par côté"
+  },
+  {
+   "key": "pdiamant",
+   "name": "Pompes diamant",
+   "fam": "corps",
+   "c1": "#7FE3FF",
+   "c2": "#D6F7FF",
+   "icon": "dumbbell",
+   "unit": "d’affilée"
+  },
+  {
+   "key": "pclap",
+   "name": "Pompes claquées",
+   "fam": "corps",
+   "c1": "#FFD93D",
+   "c2": "#FFFFFF",
+   "icon": "zap",
+   "unit": "d’affilée"
+  },
+  {
+   "key": "parcher",
+   "name": "Pompes archer",
+   "fam": "corps",
+   "c1": "#6BCB77",
+   "c2": "#E6FBFF",
+   "icon": "target",
+   "unit": "par côté"
+  },
+  {
+   "key": "pone",
+   "name": "Pompes à une main",
+   "fam": "corps",
+   "c1": "#FF6B6B",
+   "c2": "#F6DE96",
+   "icon": "dumbbell",
+   "unit": "d’affilée"
+  },
+  {
+   "key": "course",
+   "name": "Course sans arrêt",
+   "fam": "cardio",
+   "c1": "#6BCB77",
+   "c2": "#C9F2CE",
+   "icon": "heart",
+   "unit": "distance"
+  },
+  {
+   "key": "c5k",
+   "name": "5 km chrono",
+   "fam": "cardio",
+   "c1": "#FF9F43",
+   "c2": "#FFE0BF",
+   "icon": "heart",
+   "unit": "temps"
+  },
+  {
+   "key": "c10k",
+   "name": "10 km chrono",
+   "fam": "cardio",
+   "c1": "#F28C8C",
+   "c2": "#FFE0E0",
+   "icon": "heart",
+   "unit": "temps"
+  },
+  {
+   "key": "cooper",
+   "name": "Test de Cooper",
+   "fam": "cardio",
+   "c1": "#FF6B6B",
+   "c2": "#FFC4C4",
+   "icon": "heart",
+   "unit": "en 12 min"
+  },
+  {
+   "key": "velo",
+   "name": "Vélo en une sortie",
+   "fam": "cardio",
+   "c1": "#FFD93D",
+   "c2": "#FFF3B0",
+   "icon": "zap",
+   "unit": "distance"
+  },
+  {
+   "key": "rameur",
+   "name": "Rameur 2 km",
+   "fam": "cardio",
+   "c1": "#5DA9FF",
+   "c2": "#D6E8FF",
+   "icon": "droplet",
+   "unit": "temps"
+  },
+  {
+   "key": "natation",
+   "name": "Natation sans pause",
+   "fam": "cardio",
+   "c1": "#4ECDC4",
+   "c2": "#D9F5EA",
+   "icon": "droplet",
+   "unit": "distance"
+  },
+  {
+   "key": "corde",
+   "name": "Corde à sauter",
+   "fam": "cardio",
+   "c1": "#B89CFF",
+   "c2": "#E6DAFF",
+   "icon": "zap",
+   "unit": "sans faute"
+  },
+  {
+   "key": "du",
+   "name": "Double-unders",
+   "fam": "cardio",
+   "c1": "#FF9F43",
+   "c2": "#FFD9A8",
+   "icon": "zap",
+   "unit": "d’affilée"
+  },
+  {
+   "key": "stairs",
+   "name": "Escaliers (stairmaster)",
+   "fam": "cardio",
+   "c1": "#FF9F43",
+   "c2": "#FFE0BF",
+   "icon": "chart",
+   "unit": "étages d’une traite"
+  },
+  {
+   "key": "stairs100",
+   "name": "100 étages chrono",
+   "fam": "cardio",
+   "c1": "#FFD93D",
+   "c2": "#FFF3B0",
+   "icon": "chart",
+   "unit": "temps"
+  },
+  {
+   "key": "stairs10",
+   "name": "Étages en 10 minutes",
+   "fam": "cardio",
+   "c1": "#FF6B6B",
+   "c2": "#FFD2D2",
+   "icon": "chart",
+   "unit": "étages"
+  },
+  {
+   "key": "stairs30",
+   "name": "Étages en 30 minutes",
+   "fam": "cardio",
+   "c1": "#6BCB77",
+   "c2": "#C9F2CE",
+   "icon": "chart",
+   "unit": "étages"
+  },
+  {
+   "key": "stairsmax",
+   "name": "Niveau max tenu",
+   "fam": "cardio",
+   "c1": "#B89CFF",
+   "c2": "#E6DAFF",
+   "icon": "zap",
+   "unit": "tenue au niveau maximum"
+  },
+  {
+   "key": "vo2",
+   "name": "VO2max",
+   "fam": "cardio",
+   "c1": "#5DA9FF",
+   "c2": "#E6FBFF",
+   "icon": "heart",
+   "unit": "consommation maximale d’oxygène, ml/kg/min"
+  },
+  {
+   "key": "fcrepos",
+   "name": "Fréquence cardiaque au repos",
+   "fam": "cardio",
+   "c1": "#FF6B6B",
+   "c2": "#FFD2D2",
+   "icon": "heart",
+   "unit": "battements par minute"
+  },
+  {
+   "key": "squatbar",
+   "name": "Squat barre",
+   "fam": "force",
+   "c1": "#FF6B6B",
+   "c2": "#FFC4C4",
+   "icon": "weight",
+   "unit": "× poids de corps"
+  },
+  {
+   "key": "bench",
+   "name": "Développé couché",
+   "fam": "force",
+   "c1": "#5DA9FF",
+   "c2": "#D6E8FF",
+   "icon": "weight",
+   "unit": "× poids de corps"
+  },
+  {
+   "key": "deadlift",
+   "name": "Soulevé de terre",
+   "fam": "force",
+   "c1": "#C3C8CE",
+   "c2": "#FFFFFF",
+   "icon": "weight",
+   "unit": "× poids de corps"
+  },
+  {
+   "key": "farmer",
+   "name": "Marche du fermier",
+   "fam": "force",
+   "c1": "#E0A87A",
+   "c2": "#F7DCC4",
+   "icon": "weight",
+   "unit": "mètres, ton poids en mains"
+  },
+  {
+   "key": "ohp",
+   "name": "Développé militaire",
+   "fam": "force",
+   "c1": "#FFD93D",
+   "c2": "#FFF3B0",
+   "icon": "weight",
+   "unit": "× poids de corps"
+  },
+  {
+   "key": "row",
+   "name": "Rowing barre",
+   "fam": "force",
+   "c1": "#5DA9FF",
+   "c2": "#D6E8FF",
+   "icon": "weight",
+   "unit": "× poids de corps"
+  },
+  {
+   "key": "hipthrust",
+   "name": "Hip thrust",
+   "fam": "force",
+   "c1": "#FF9F43",
+   "c2": "#FFD9A8",
+   "icon": "weight",
+   "unit": "× poids de corps"
+  },
+  {
+   "key": "pullupW",
+   "name": "Tractions lestées",
+   "fam": "force",
+   "c1": "#B89CFF",
+   "c2": "#E6DAFF",
+   "icon": "weight",
+   "unit": "poids ajouté × poids de corps"
+  },
+  {
+   "key": "dipsW",
+   "name": "Dips lestés",
+   "fam": "force",
+   "c1": "#FF6B6B",
+   "c2": "#FFC4C4",
+   "icon": "weight",
+   "unit": "poids ajouté × poids de corps"
+  },
+  {
+   "key": "curl",
+   "name": "Curl barre",
+   "fam": "force",
+   "c1": "#6BCB77",
+   "c2": "#C9F2CE",
+   "icon": "weight",
+   "unit": "× poids de corps"
+  }
+ ]
+}

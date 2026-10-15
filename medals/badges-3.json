@@ -1,0 +1,254 @@
+[
+ {
+  "id": "top25ffmi",
+  "name": "Top 25 % muscle",
+  "desc": "Dans les 25 % les plus musclés (indice musculaire 21)",
+  "rar": "epique",
+  "color": "#FF6B6B",
+  "icon": "dumbbell",
+  "secret": false
+ },
+ {
+  "id": "top25visc",
+  "name": "Top 25 % viscérale",
+  "desc": "Graisse viscérale à 6 ou moins",
+  "rar": "epique",
+  "color": "#B89CFF",
+  "icon": "target",
+  "secret": false
+ },
+ {
+  "id": "top25waist",
+  "name": "Top 25 % taille",
+  "desc": "Tour de taille sous 46 % de sa taille",
+  "rar": "epique",
+  "color": "#C3C8CE",
+  "icon": "ruler",
+  "secret": false
+ },
+ {
+  "id": "visc",
+  "name": "Ventre sain",
+  "desc": "Graisse viscérale à 5 ou moins",
+  "rar": "epique",
+  "color": "#B89CFF",
+  "icon": "target",
+  "secret": false
+ },
+ {
+  "id": "diamant",
+  "name": "Diamant",
+  "desc": "Note 80, gras 12 % max, indice musculaire 21, viscérale 4 max",
+  "rar": "legendaire",
+  "color": "#7FE3FF",
+  "icon": "card",
+  "secret": false
+ },
+ {
+  "id": "leg",
+  "name": "Légende",
+  "desc": "Note 85, gras 10 % max, indice musculaire 22, viscérale 2 max",
+  "rar": "legendaire",
+  "color": "#B89CFF",
+  "icon": "card",
+  "secret": false
+ },
+ {
+  "id": "under10",
+  "name": "Sous les 10 %",
+  "desc": "Passer sous 10 % de masse grasse",
+  "rar": "legendaire",
+  "color": "#FF9F43",
+  "icon": "flame",
+  "secret": false
+ },
+ {
+  "id": "ffmi23",
+  "name": "Titan",
+  "desc": "Indice musculaire 23 ou plus",
+  "rar": "legendaire",
+  "color": "#FF6B6B",
+  "icon": "dumbbell",
+  "secret": false
+ },
+ {
+  "id": "champ",
+  "name": "Champion de saison",
+  "desc": "Finir premier du classement progression à la clôture d’une saison",
+  "rar": "legendaire",
+  "color": "#D9AE4A",
+  "icon": "trophy",
+  "secret": false
+ },
+ {
+  "id": "champ2",
+  "name": "Dynastie",
+  "desc": "Gagner deux saisons",
+  "rar": "legendaire",
+  "color": "#D9AE4A",
+  "icon": "trophy",
+  "secret": false
+ },
+ {
+  "id": "belt6",
+  "name": "Ceinture à vie",
+  "desc": "Six mois avec la ceinture SPC",
+  "rar": "legendaire",
+  "color": "#D9AE4A",
+  "icon": "trophy",
+  "secret": false
+ },
+ {
+  "id": "perfect",
+  "name": "Invaincu",
+  "desc": "Champion de saison sans jamais lâcher la ceinture",
+  "rar": "legendaire",
+  "color": "#F6DE96",
+  "icon": "trophy",
+  "secret": false
+ },
+ {
+  "id": "fat20",
+  "name": "-20 kg de gras",
+  "desc": "Perdre 20 kg de masse grasse depuis le départ",
+  "rar": "legendaire",
+  "color": "#FF6B6B",
+  "icon": "flame",
+  "secret": false
+ },
+ {
+  "id": "mus10",
+  "name": "+10 kg de muscle",
+  "desc": "Gagner 10 kg de masse musculaire depuis le départ",
+  "rar": "legendaire",
+  "color": "#FF6B6B",
+  "icon": "dumbbell",
+  "secret": false
+ },
+ {
+  "id": "waist15",
+  "name": "-15 cm de taille",
+  "desc": "Perdre 15 cm de tour de taille depuis le départ",
+  "rar": "legendaire",
+  "color": "#C3C8CE",
+  "icon": "ruler",
+  "secret": false
+ },
+ {
+  "id": "ascension",
+  "name": "Ascension",
+  "desc": "Partir Bronze et atteindre la carte Or",
+  "rar": "legendaire",
+  "color": "#D9AE4A",
+  "icon": "card",
+  "secret": false
+ },
+ {
+  "id": "top10fat",
+  "name": "Top 10 % sèche",
+  "desc": "Dans les 10 % d’hommes de son âge les plus secs",
+  "rar": "legendaire",
+  "color": "#FF9F43",
+  "icon": "flame",
+  "secret": false
+ },
+ {
+  "id": "top10ffmi",
+  "name": "Top 10 % muscle",
+  "desc": "Dans les 10 % les plus musclés (indice musculaire 22)",
+  "rar": "legendaire",
+  "color": "#FF6B6B",
+  "icon": "dumbbell",
+  "secret": false
+ },
+ {
+  "id": "streak12",
+  "name": "Un an d’affilée",
+  "desc": "Douze pesées mensuelles sans en rater",
+  "rar": "legendaire",
+  "color": "#5DA9FF",
+  "icon": "calendar",
+  "secret": false
+ },
+ {
+  "id": "compare",
+  "name": "Face à face",
+  "desc": "Comparer deux participants",
+  "rar": "commun",
+  "color": "#4ECDC4",
+  "icon": "sym",
+  "secret": false
+ },
+ {
+  "id": "curieux",
+  "name": "Curieux",
+  "desc": "Regarder la carte de chaque participant",
+  "rar": "commun",
+  "color": "#5DA9FF",
+  "icon": "users",
+  "secret": false
+ },
+ {
+  "id": "share",
+  "name": "Partageur",
+  "desc": "Partager sa carte",
+  "rar": "commun",
+  "color": "#B89CFF",
+  "icon": "users",
+  "secret": false
+ },
+ {
+  "id": "present",
+  "name": "Présent",
+  "desc": "Être dispo le jour de la pesée fixée, et s’y peser",
+  "rar": "commun",
+  "color": "#6BCB77",
+  "icon": "calendar",
+  "secret": false
+ },
+ {
+  "id": "armfat3",
+  "name": "Affûté",
+  "desc": "Gras d’un bras ou d’une jambe en baisse de 3 points depuis le départ",
+  "rar": "rare",
+  "color": "#FF9F43",
+  "icon": "flame",
+  "secret": false
+ },
+ {
+  "id": "eau58",
+  "name": "Hydraté",
+  "desc": "Eau corporelle à 58 % ou plus",
+  "rar": "rare",
+  "color": "#4ECDC4",
+  "icon": "droplet",
+  "secret": false
+ },
+ {
+  "id": "metaAge",
+  "name": "Plus jeune que son âge",
+  "desc": "Âge métabolique Tanita sous l’âge réel",
+  "rar": "rare",
+  "color": "#5DA9FF",
+  "icon": "calendar",
+  "secret": false
+ },
+ {
+  "id": "seg15",
+  "name": "Zone sèche",
+  "desc": "Une zone du corps sous 15 % de gras",
+  "rar": "rare",
+  "color": "#FF9F43",
+  "icon": "flame",
+  "secret": false
+ },
+ {
+  "id": "presse25",
+  "name": "Presse 2,5 ×",
+  "desc": "Presse à cuisses EGYM à 2,5 fois son poids de corps",
+  "rar": "epique",
+  "color": "#FF6B6B",
+  "icon": "dumbbell",
+  "secret": false
+ }
+]

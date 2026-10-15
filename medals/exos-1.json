@@ -1,0 +1,200 @@
+[
+ {
+  "key": "pompes",
+  "name": "Pompes",
+  "fam": "corps",
+  "c1": "#FF6B6B",
+  "c2": "#FFC4C4",
+  "icon": "dumbbell",
+  "unit": "d’affilée"
+ },
+ {
+  "key": "tractions",
+  "name": "Tractions pronation",
+  "fam": "corps",
+  "c1": "#5DA9FF",
+  "c2": "#D6E8FF",
+  "icon": "dumbbell",
+  "unit": "d’affilée"
+ },
+ {
+  "key": "tractsup",
+  "name": "Tractions supination",
+  "fam": "corps",
+  "c1": "#4ECDC4",
+  "c2": "#CFF5F0",
+  "icon": "dumbbell",
+  "unit": "d’affilée"
+ },
+ {
+  "key": "gainage",
+  "name": "Gainage",
+  "fam": "corps",
+  "c1": "#9AA1A9",
+  "c2": "#E9ECEF",
+  "icon": "sym",
+  "unit": "planche"
+ },
+ {
+  "key": "squats",
+  "name": "Squats",
+  "fam": "corps",
+  "c1": "#6BCB77",
+  "c2": "#C9F2CE",
+  "icon": "dumbbell",
+  "unit": "d’affilée"
+ },
+ {
+  "key": "dips",
+  "name": "Dips",
+  "fam": "corps",
+  "c1": "#FF9F43",
+  "c2": "#FFD9A8",
+  "icon": "dumbbell",
+  "unit": "d’affilée"
+ },
+ {
+  "key": "pistol",
+  "name": "Pistol squats",
+  "fam": "corps",
+  "c1": "#4ECDC4",
+  "c2": "#D9F5EA",
+  "icon": "dumbbell",
+  "unit": "par jambe"
+ },
+ {
+  "key": "burpees",
+  "name": "Burpees",
+  "fam": "corps",
+  "c1": "#FF6B6B",
+  "c2": "#FFD2D2",
+  "icon": "flame",
+  "unit": "d’affilée"
+ },
+ {
+  "key": "muscleup",
+  "name": "Muscle-ups",
+  "fam": "corps",
+  "c1": "#B89CFF",
+  "c2": "#E6DAFF",
+  "icon": "zap",
+  "unit": "d’affilée"
+ },
+ {
+  "key": "hang",
+  "name": "Suspension bras tendus",
+  "fam": "corps",
+  "c1": "#C3C8CE",
+  "c2": "#FFFFFF",
+  "icon": "target",
+  "unit": "tenue"
+ },
+ {
+  "key": "lsit",
+  "name": "L-sit",
+  "fam": "corps",
+  "c1": "#FFD93D",
+  "c2": "#FFF3B0",
+  "icon": "sym",
+  "unit": "tenue"
+ },
+ {
+  "key": "chaise",
+  "name": "Chaise contre le mur",
+  "fam": "corps",
+  "c1": "#E0A87A",
+  "c2": "#F7DCC4",
+  "icon": "sym",
+  "unit": "tenue"
+ },
+ {
+  "key": "gainlat",
+  "name": "Gainage latéral",
+  "fam": "corps",
+  "c1": "#9BD9C2",
+  "c2": "#D9F5EA",
+  "icon": "sym",
+  "unit": "par côté"
+ },
+ {
+  "key": "pdiamant",
+  "name": "Pompes diamant",
+  "fam": "corps",
+  "c1": "#7FE3FF",
+  "c2": "#D6F7FF",
+  "icon": "dumbbell",
+  "unit": "d’affilée"
+ },
+ {
+  "key": "pclap",
+  "name": "Pompes claquées",
+  "fam": "corps",
+  "c1": "#FFD93D",
+  "c2": "#FFFFFF",
+  "icon": "zap",
+  "unit": "d’affilée"
+ },
+ {
+  "key": "parcher",
+  "name": "Pompes archer",
+  "fam": "corps",
+  "c1": "#6BCB77",
+  "c2": "#E6FBFF",
+  "icon": "target",
+  "unit": "par côté"
+ },
+ {
+  "key": "pone",
+  "name": "Pompes à une main",
+  "fam": "corps",
+  "c1": "#FF6B6B",
+  "c2": "#F6DE96",
+  "icon": "dumbbell",
+  "unit": "d’affilée"
+ },
+ {
+  "key": "course",
+  "name": "Course sans arrêt",
+  "fam": "cardio",
+  "c1": "#6BCB77",
+  "c2": "#C9F2CE",
+  "icon": "heart",
+  "unit": "distance"
+ },
+ {
+  "key": "c5k",
+  "name": "5 km chrono",
+  "fam": "cardio",
+  "c1": "#FF9F43",
+  "c2": "#FFE0BF",
+  "icon": "heart",
+  "unit": "temps"
+ },
+ {
+  "key": "c10k",
+  "name": "10 km chrono",
+  "fam": "cardio",
+  "c1": "#F28C8C",
+  "c2": "#FFE0E0",
+  "icon": "heart",
+  "unit": "temps"
+ },
+ {
+  "key": "cooper",
+  "name": "Test de Cooper",
+  "fam": "cardio",
+  "c1": "#FF6B6B",
+  "c2": "#FFC4C4",
+  "icon": "heart",
+  "unit": "en 12 min"
+ },
+ {
+  "key": "velo",
+  "name": "Vélo en une sortie",
+  "fam": "cardio",
+  "c1": "#FFD93D",
+  "c2": "#FFF3B0",
+  "icon": "zap",
+  "unit": "distance"
+ }
+]

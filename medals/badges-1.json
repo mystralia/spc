@@ -1,0 +1,254 @@
+[
+ {
+  "id": "first",
+  "name": "Première pesée",
+  "desc": "Monter sur la balance une première fois",
+  "rar": "commun",
+  "color": "#5DA9FF",
+  "icon": "weight",
+  "secret": false
+ },
+ {
+  "id": "profil",
+  "name": "Fiche complète",
+  "desc": "Taille, date de naissance et photo de profil renseignées",
+  "rar": "commun",
+  "color": "#5DA9FF",
+  "icon": "users",
+  "secret": false
+ },
+ {
+  "id": "selfie",
+  "name": "Visage découvert",
+  "desc": "Mettre sa photo de profil sur sa carte",
+  "rar": "commun",
+  "color": "#4ECDC4",
+  "icon": "users",
+  "secret": false
+ },
+ {
+  "id": "goalset",
+  "name": "Cibles fixées",
+  "desc": "Valider ses premiers objectifs",
+  "rar": "commun",
+  "color": "#D9AE4A",
+  "icon": "target",
+  "secret": false
+ },
+ {
+  "id": "dispo1",
+  "name": "Présent à l’appel",
+  "desc": "Renseigner ses dispos avant une pesée",
+  "rar": "commun",
+  "color": "#5DA9FF",
+  "icon": "calendar",
+  "secret": false
+ },
+ {
+  "id": "ruban",
+  "name": "Mètre ruban complet",
+  "desc": "Les sept tours remplis sur une pesée",
+  "rar": "commun",
+  "color": "#C3C8CE",
+  "icon": "ruler",
+  "secret": false
+ },
+ {
+  "id": "egym",
+  "name": "Écrans relevés",
+  "desc": "Les performances EGYM relevées sur une pesée",
+  "rar": "commun",
+  "color": "#FFD93D",
+  "icon": "zap",
+  "secret": false
+ },
+ {
+  "id": "photos",
+  "name": "Sous tous les angles",
+  "desc": "Face, profil et dos sur une même pesée",
+  "rar": "commun",
+  "color": "#B89CFF",
+  "icon": "users",
+  "secret": false
+ },
+ {
+  "id": "tanita",
+  "name": "Analyse complète",
+  "desc": "Une pesée Tanita avec le détail par zone",
+  "rar": "commun",
+  "color": "#4ECDC4",
+  "icon": "weight",
+  "secret": false
+ },
+ {
+  "id": "firstloss",
+  "name": "Première perte",
+  "desc": "Un premier mois où le gras baisse",
+  "rar": "commun",
+  "color": "#FF9F43",
+  "icon": "flame",
+  "secret": false
+ },
+ {
+  "id": "fat1",
+  "name": "-1 kg de gras",
+  "desc": "Perdre 1 kg de masse grasse depuis le départ",
+  "rar": "commun",
+  "color": "#FF9F43",
+  "icon": "flame",
+  "secret": false
+ },
+ {
+  "id": "mus05",
+  "name": "+0,5 kg de muscle",
+  "desc": "Gagner 0,5 kg de masse musculaire depuis le départ",
+  "rar": "commun",
+  "color": "#FF6B6B",
+  "icon": "dumbbell",
+  "secret": false
+ },
+ {
+  "id": "waist2",
+  "name": "-2 cm de taille",
+  "desc": "Perdre 2 cm de tour de taille depuis le départ",
+  "rar": "commun",
+  "color": "#C3C8CE",
+  "icon": "ruler",
+  "secret": false
+ },
+ {
+  "id": "goal1",
+  "name": "Objectif atteint",
+  "desc": "Atteindre un objectif fixé avant une pesée",
+  "rar": "commun",
+  "color": "#D9AE4A",
+  "icon": "target",
+  "secret": false
+ },
+ {
+  "id": "obj2m",
+  "name": "Doublé",
+  "desc": "Atteindre 2 objectifs lors d’une seule pesée",
+  "rar": "commun",
+  "color": "#D9AE4A",
+  "icon": "target",
+  "secret": false
+ },
+ {
+  "id": "obj5m",
+  "name": "Razzia",
+  "desc": "Atteindre 5 objectifs lors d’une seule pesée",
+  "rar": "commun",
+  "color": "#FFD93D",
+  "icon": "target",
+  "secret": false
+ },
+ {
+  "id": "goalall",
+  "name": "Tous les objectifs",
+  "desc": "Atteindre tous ses objectifs d’une pesée, avec au moins 5 fixés",
+  "rar": "commun",
+  "color": "#6BCB77",
+  "icon": "target",
+  "secret": false
+ },
+ {
+  "id": "zero",
+  "name": "Zéro pointé",
+  "desc": "Une pesée avec au moins 3 objectifs fixés et aucun atteint",
+  "rar": "commun",
+  "color": "#9AA1A9",
+  "icon": "target",
+  "secret": false
+ },
+ {
+  "id": "ivrogne",
+  "name": "Paroles en l’air",
+  "desc": "Trois pesées d’affilée sans atteindre aucun objectif (3 fixés minimum)",
+  "rar": "commun",
+  "color": "#9AA1A9",
+  "icon": "target",
+  "secret": false
+ },
+ {
+  "id": "streak2",
+  "name": "Deux de suite",
+  "desc": "Deux pesées mensuelles d’affilée",
+  "rar": "commun",
+  "color": "#5DA9FF",
+  "icon": "calendar",
+  "secret": false
+ },
+ {
+  "id": "dispo3",
+  "name": "Toujours là",
+  "desc": "Répondre aux dispos trois pesées de suite",
+  "rar": "commun",
+  "color": "#5DA9FF",
+  "icon": "calendar",
+  "secret": false
+ },
+ {
+  "id": "reveal",
+  "name": "Jour J",
+  "desc": "Ouvrir sa nouvelle carte le jour de la révélation",
+  "rar": "commun",
+  "color": "#D9AE4A",
+  "icon": "card",
+  "secret": false
+ },
+ {
+  "id": "recomp",
+  "name": "Recomposition",
+  "desc": "Gras en baisse et muscle en hausse le même mois",
+  "rar": "commun",
+  "color": "#4ECDC4",
+  "icon": "sym",
+  "secret": false
+ },
+ {
+  "id": "sym",
+  "name": "Symétrie parfaite",
+  "desc": "Moins de 0,5 point d’écart gauche-droite partout",
+  "rar": "commun",
+  "color": "#4ECDC4",
+  "icon": "sym",
+  "secret": false
+ },
+ {
+  "id": "avantapres",
+  "name": "Avant · après",
+  "desc": "Deux mois de photos de face",
+  "rar": "commun",
+  "color": "#B89CFF",
+  "icon": "users",
+  "secret": false
+ },
+ {
+  "id": "dossier",
+  "name": "Dossier complet",
+  "desc": "Tanita, mètre ruban, photos et EGYM le même mois",
+  "rar": "commun",
+  "color": "#D9AE4A",
+  "icon": "card",
+  "secret": false
+ },
+ {
+  "id": "kfc1",
+  "name": "Poulet du mois",
+  "desc": "Recevoir un premier KFC",
+  "rar": "commun",
+  "color": "#FF9F43",
+  "icon": "flame",
+  "secret": false
+ },
+ {
+  "id": "kfc2",
+  "name": "Récidive",
+  "desc": "Recevoir un deuxième KFC",
+  "rar": "commun",
+  "color": "#FF9F43",
+  "icon": "flame",
+  "secret": false
+ }
+]

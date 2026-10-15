@@ -1,0 +1,263 @@
+[
+ {
+  "id": "tirage15",
+  "name": "Tirage 1,5 ×",
+  "desc": "Tirage vertical EGYM à 1,5 fois son poids de corps",
+  "rar": "epique",
+  "color": "#FF6B6B",
+  "icon": "dumbbell",
+  "secret": false
+ },
+ {
+  "id": "cardio10",
+  "name": "Cœur de jeune",
+  "desc": "Âge cardio EGYM dix ans sous l’âge réel",
+  "rar": "epique",
+  "color": "#6BCB77",
+  "icon": "heart",
+  "secret": false
+ },
+ {
+  "id": "egymUp",
+  "name": "Tout en hausse",
+  "desc": "Toutes les performances EGYM en hausse d’une pesée à l’autre",
+  "rar": "epique",
+  "color": "#FFD93D",
+  "icon": "zap",
+  "secret": false
+ },
+ {
+  "id": "diamant3",
+  "name": "Diamant brut",
+  "desc": "Carte Diamant ou mieux trois pesées de suite",
+  "rar": "legendaire",
+  "color": "#7FE3FF",
+  "icon": "card",
+  "secret": false
+ },
+ {
+  "id": "alltitles",
+  "name": "Grand chelem",
+  "desc": "Les trois titres de progression (bras, jambes, tronc) le même mois",
+  "rar": "legendaire",
+  "color": "#F6DE96",
+  "icon": "medal",
+  "secret": false
+ },
+ {
+  "id": "streak24",
+  "name": "Deux ans",
+  "desc": "Vingt-quatre pesées mensuelles sans en rater",
+  "rar": "legendaire",
+  "color": "#5DA9FF",
+  "icon": "calendar",
+  "secret": false
+ },
+ {
+  "id": "badges50",
+  "name": "Panthéon",
+  "desc": "Débloquer 50 badges",
+  "rar": "legendaire",
+  "color": "#F6DE96",
+  "icon": "medal",
+  "secret": false
+ },
+ {
+  "id": "badges30",
+  "name": "Trésorier",
+  "desc": "Débloquer 30 badges",
+  "rar": "legendaire",
+  "color": "#F6DE96",
+  "icon": "medal",
+  "secret": false
+ },
+ {
+  "id": "voyant",
+  "name": "Voyant",
+  "desc": "Les trois objectifs de quelqu’un (poids, gras, muscle) devinés juste le même mois",
+  "rar": "rare",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": false
+ },
+ {
+  "id": "nostradamus",
+  "name": "Nostradamus",
+  "desc": "Meilleur pronostiqueur trois mois de suite",
+  "rar": "epique",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": false
+ },
+ {
+  "id": "boulefelee",
+  "name": "Boule fêlée",
+  "desc": "Dernier des pronostiqueurs deux fois",
+  "rar": "commun",
+  "color": "#9AA1A9",
+  "icon": "eye",
+  "secret": false
+ },
+ {
+  "id": "s_lecteur",
+  "name": "Lecteur",
+  "desc": "Ouvrir l’aide « ? » de toutes les pages",
+  "rar": "rare",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": true
+ },
+ {
+  "id": "s_aube",
+  "name": "Lève-tôt",
+  "desc": "Ouvrir l’appli entre 4 h et 6 h 30",
+  "rar": "commun",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": true
+ },
+ {
+  "id": "s_nuit",
+  "name": "Noctambule",
+  "desc": "Ouvrir l’appli entre minuit et 4 h",
+  "rar": "commun",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": true
+ },
+ {
+  "id": "s_curieux",
+  "name": "Curieux avant tout",
+  "desc": "Le jour J, regarder la carte de quelqu’un d’autre avant la sienne",
+  "rar": "rare",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": true
+ },
+ {
+  "id": "s_doigts",
+  "name": "Dix doigts",
+  "desc": "Taper dix fois de suite sur le logo",
+  "rar": "commun",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": true
+ },
+ {
+  "id": "s_anniv",
+  "name": "Bougies",
+  "desc": "Ouvrir l’appli le jour de son anniversaire",
+  "rar": "rare",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": true
+ },
+ {
+  "id": "s_pile",
+  "name": "Pile poil",
+  "desc": "Une note globale de 50 ou de 77 pile",
+  "rar": "rare",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": true
+ },
+ {
+  "id": "s_fidele",
+  "name": "Fidèle",
+  "desc": "Ouvrir l’appli chaque jour de la semaine qui précède la pesée, jour J compris",
+  "rar": "epique",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": true
+ },
+ {
+  "id": "s_espion",
+  "name": "Espion",
+  "desc": "Ouvrir la carte du même participant cinq jours différents",
+  "rar": "rare",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": true
+ },
+ {
+  "id": "s_comptable",
+  "name": "Comptable",
+  "desc": "Ouvrir l’onglet Évolution dix jours différents",
+  "rar": "rare",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": true
+ },
+ {
+  "id": "s_chrono",
+  "name": "À l’heure",
+  "desc": "Ouvrir l’appli dans les deux minutes autour de l’heure de révélation",
+  "rar": "epique",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": true
+ },
+ {
+  "id": "s_v13",
+  "name": "Vendredi 13",
+  "desc": "Ouvrir l’appli un vendredi 13",
+  "rar": "commun",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": true
+ },
+ {
+  "id": "s_nouvelan",
+  "name": "Bonne année",
+  "desc": "Ouvrir l’appli un 1er janvier",
+  "rar": "commun",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": true
+ },
+ {
+  "id": "s_photo",
+  "name": "Photographe",
+  "desc": "Changer trois fois sa photo de profil",
+  "rar": "commun",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": true
+ },
+ {
+  "id": "s_mot",
+  "name": "Premier mot",
+  "desc": "Écrire un premier commentaire",
+  "rar": "commun",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": true
+ },
+ {
+  "id": "s_bavard",
+  "name": "Bavard",
+  "desc": "Écrire dix commentaires",
+  "rar": "rare",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": true
+ },
+ {
+  "id": "s_langue",
+  "name": "Mauvaise langue",
+  "desc": "Pronostiquer que tous les autres reprennent du gras",
+  "rar": "rare",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": true
+ },
+ {
+  "id": "s_optimiste",
+  "name": "Optimiste",
+  "desc": "Pronostiquer que tous les autres perdent du gras",
+  "rar": "commun",
+  "color": "#B89CFF",
+  "icon": "eye",
+  "secret": true
+ }
+]

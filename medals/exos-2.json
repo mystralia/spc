@@ -1,0 +1,191 @@
+[
+ {
+  "key": "rameur",
+  "name": "Rameur 2 km",
+  "fam": "cardio",
+  "c1": "#5DA9FF",
+  "c2": "#D6E8FF",
+  "icon": "droplet",
+  "unit": "temps"
+ },
+ {
+  "key": "natation",
+  "name": "Natation sans pause",
+  "fam": "cardio",
+  "c1": "#4ECDC4",
+  "c2": "#D9F5EA",
+  "icon": "droplet",
+  "unit": "distance"
+ },
+ {
+  "key": "corde",
+  "name": "Corde à sauter",
+  "fam": "cardio",
+  "c1": "#B89CFF",
+  "c2": "#E6DAFF",
+  "icon": "zap",
+  "unit": "sans faute"
+ },
+ {
+  "key": "du",
+  "name": "Double-unders",
+  "fam": "cardio",
+  "c1": "#FF9F43",
+  "c2": "#FFD9A8",
+  "icon": "zap",
+  "unit": "d’affilée"
+ },
+ {
+  "key": "stairs",
+  "name": "Escaliers (stairmaster)",
+  "fam": "cardio",
+  "c1": "#FF9F43",
+  "c2": "#FFE0BF",
+  "icon": "chart",
+  "unit": "étages d’une traite"
+ },
+ {
+  "key": "stairs100",
+  "name": "100 étages chrono",
+  "fam": "cardio",
+  "c1": "#FFD93D",
+  "c2": "#FFF3B0",
+  "icon": "chart",
+  "unit": "temps"
+ },
+ {
+  "key": "stairs10",
+  "name": "Étages en 10 minutes",
+  "fam": "cardio",
+  "c1": "#FF6B6B",
+  "c2": "#FFD2D2",
+  "icon": "chart",
+  "unit": "étages"
+ },
+ {
+  "key": "stairs30",
+  "name": "Étages en 30 minutes",
+  "fam": "cardio",
+  "c1": "#6BCB77",
+  "c2": "#C9F2CE",
+  "icon": "chart",
+  "unit": "étages"
+ },
+ {
+  "key": "stairsmax",
+  "name": "Niveau max tenu",
+  "fam": "cardio",
+  "c1": "#B89CFF",
+  "c2": "#E6DAFF",
+  "icon": "zap",
+  "unit": "tenue au niveau maximum"
+ },
+ {
+  "key": "vo2",
+  "name": "VO2max",
+  "fam": "cardio",
+  "c1": "#5DA9FF",
+  "c2": "#E6FBFF",
+  "icon": "heart",
+  "unit": "consommation maximale d’oxygène, ml/kg/min"
+ },
+ {
+  "key": "fcrepos",
+  "name": "Fréquence cardiaque au repos",
+  "fam": "cardio",
+  "c1": "#FF6B6B",
+  "c2": "#FFD2D2",
+  "icon": "heart",
+  "unit": "battements par minute"
+ },
+ {
+  "key": "squatbar",
+  "name": "Squat barre",
+  "fam": "force",
+  "c1": "#FF6B6B",
+  "c2": "#FFC4C4",
+  "icon": "weight",
+  "unit": "× poids de corps"
+ },
+ {
+  "key": "bench",
+  "name": "Développé couché",
+  "fam": "force",
+  "c1": "#5DA9FF",
+  "c2": "#D6E8FF",
+  "icon": "weight",
+  "unit": "× poids de corps"
+ },
+ {
+  "key": "deadlift",
+  "name": "Soulevé de terre",
+  "fam": "force",
+  "c1": "#C3C8CE",
+  "c2": "#FFFFFF",
+  "icon": "weight",
+  "unit": "× poids de corps"
+ },
+ {
+  "key": "farmer",
+  "name": "Marche du fermier",
+  "fam": "force",
+  "c1": "#E0A87A",
+  "c2": "#F7DCC4",
+  "icon": "weight",
+  "unit": "mètres, ton poids en mains"
+ },
+ {
+  "key": "ohp",
+  "name": "Développé militaire",
+  "fam": "force",
+  "c1": "#FFD93D",
+  "c2": "#FFF3B0",
+  "icon": "weight",
+  "unit": "× poids de corps"
+ },
+ {
+  "key": "row",
+  "name": "Rowing barre",
+  "fam": "force",
+  "c1": "#5DA9FF",
+  "c2": "#D6E8FF",
+  "icon": "weight",
+  "unit": "× poids de corps"
+ },
+ {
+  "key": "hipthrust",
+  "name": "Hip thrust",
+  "fam": "force",
+  "c1": "#FF9F43",
+  "c2": "#FFD9A8",
+  "icon": "weight",
+  "unit": "× poids de corps"
+ },
+ {
+  "key": "pullupW",
+  "name": "Tractions lestées",
+  "fam": "force",
+  "c1": "#B89CFF",
+  "c2": "#E6DAFF",
+  "icon": "weight",
+  "unit": "poids ajouté × poids de corps"
+ },
+ {
+  "key": "dipsW",
+  "name": "Dips lestés",
+  "fam": "force",
+  "c1": "#FF6B6B",
+  "c2": "#FFC4C4",
+  "icon": "weight",
+  "unit": "poids ajouté × poids de corps"
+ },
+ {
+  "key": "curl",
+  "name": "Curl barre",
+  "fam": "force",
+  "c1": "#6BCB77",
+  "c2": "#C9F2CE",
+  "icon": "weight",
+  "unit": "× poids de corps"
+ }
+]

@@ -1,0 +1,2 @@
+window.MEDALS=window.MEDALS||{};
+Object.assign(MEDALS,{ first:(c,l,d)=>`<path d="M8 18 Q50 0 92 18 L92 96 Q50 110 8 96Z" fill="url(#g)"/><path d="M15 24 Q50 10 85 24 L85 92 Q50 103 15 92Z" fill="#14171C"/><rect x="30" y="80" width="40" height="6" rx="2" fill="${c}"/><rect x="46" y="48" width="8" height="34" fill="${c}"/><path d="M22 48 L78 48 L70 36 L30 36Z" fill="${l}"/><circle cx="50" cy="30" r="5" fill="#fff"/>` });
