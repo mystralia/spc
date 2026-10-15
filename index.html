@@ -453,11 +453,11 @@ const COSM={
   carte:[ // forme de la carte : découpe de l'enveloppe et de la carte (le contenu ne bouge pas)
     {id:'pointes',name:'Pointes',cond:'Toujours disponible',rar:'commun',unlock:()=>true},
     {id:'ecusson',name:'Écusson',cond:'Carte Or, tant que tu tiens le grade',rar:'epique',badge:'or',clipOuter:'path("M30 0 L228 0 Q258 0 258 30 L258 270 Q258 362 129 424 Q0 362 0 270 L0 30 Q0 0 30 0 Z")',clip:'path("M30 0 L220 0 Q250 0 250 30 L250 265 Q250 356 125 416 Q0 356 0 265 L0 30 Q0 0 30 0 Z")'},
-    {id:'banniere',name:'Bannière',cond:'Défi Premier titre',rar:'rare',badge:'title1',clip:'polygon(0 0,100% 0,100% 100%,50% 88%,0 100%)'},
-    {id:'octogone',name:'Octogone',cond:'Défi Habitué (trois pesées)',rar:'commun',badge:'streak3',clip:'polygon(14% 0,86% 0,100% 9%,100% 91%,86% 100%,14% 100%,0 91%,0 9%)'},
-    {id:'biseau',name:'Coins biseautés',cond:'Défi Fiche complète',rar:'commun',badge:'profil',clip:'polygon(10% 0,100% 0,100% 90%,90% 100%,0 100%,0 10%)'},
-    {id:'ticket',name:'Ticket',cond:'Défi Présent',rar:'commun',badge:'present',clip:'polygon(0 0,100% 0,100% 44%,94% 47%,94% 53%,100% 56%,100% 100%,0 100%,0 56%,6% 53%,6% 47%,0 44%)'},
-    {id:'arche',name:'Arche',cond:'Défi Première pesée',rar:'commun',badge:'first',clipOuter:'path("M0 60 Q0 0 60 0 L198 0 Q258 0 258 60 L258 424 L0 424 Z")',clip:'path("M0 60 Q0 0 60 0 L190 0 Q250 0 250 60 L250 416 L0 416 Z")'}
+    {id:'banniere',name:'Bannière',cond:'Défi Collectionneur (cinq titres mensuels)',rar:'rare',badge:'title5',clip:'polygon(0 0,100% 0,100% 100%,50% 88%,0 100%)'},
+    {id:'octogone',name:'Octogone',cond:'Défi 6 mois d’affilée',rar:'epique',badge:'streak6',clip:'polygon(14% 0,86% 0,100% 9%,100% 91%,86% 100%,14% 100%,0 91%,0 9%)'},
+    {id:'biseau',name:'Coins biseautés',cond:'Défi -5 kg de gras',rar:'rare',badge:'fat5',clip:'polygon(10% 0,100% 0,100% 90%,90% 100%,0 100%,0 10%)'},
+    {id:'ticket',name:'Ticket',cond:'Défi Triple tenant (trois ceintures)',rar:'epique',badge:'belt3',clip:'polygon(0 0,100% 0,100% 44%,94% 47%,94% 53%,100% 56%,100% 100%,0 100%,0 56%,6% 53%,6% 47%,0 44%)'},
+    {id:'arche',name:'Arche',cond:'Défi +5 kg de muscle',rar:'epique',badge:'mus5',clipOuter:'path("M0 60 Q0 0 60 0 L198 0 Q258 0 258 60 L258 424 L0 424 Z")',clip:'path("M0 60 Q0 0 60 0 L190 0 Q250 0 250 60 L250 416 L0 416 Z")'}
   ],
   theme:[
     {id:'sombre',name:'Vestiaire',cond:'Toujours disponible',rar:'commun',vars:{},unlock:()=>true},
@@ -825,7 +825,7 @@ function snapshotOf(d){ const s={profiles:{},weighins:{},badges:new Set(),pronos
   for(const key of Object.keys(d.comments||{})) for(const c of d.comments[key]) s.comments[c.id]=JSON.stringify(Object.assign({key},c));
   s.claims={}; for(const c of (d.claims||[])) s.claims[c.id]=JSON.stringify(claimRow(c));
   s.reglages=JSON.stringify({pesee:d.pesee,season:d.season,palmares:d.palmares}); return s; }
-const APP_VERSION='20261015014447';
+const APP_VERSION='20261015014523';
 function versionCheck(){ if(!/github\.io$/.test(location.hostname)) return; fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(j=>{ if(j&&j.v&&j.v!==APP_VERSION){
   // on ne recharge qu'une fois par version annoncée : si le serveur sert encore l'ancienne page (cache), pas de boucle de rechargements
   let tried=null; try{ tried=sessionStorage.getItem('spc-reload-for'); }catch(_){}
@@ -1664,7 +1664,7 @@ const HELP_SECTIONS=[
   ['contour','Contour de carte',`<p>Le liseré autour de la carte. Du grade par défaut ; les autres se débloquent par des défis (commun à légendaire). Les légendaires tournent. Touche une case pour la fiche et le bouton Équiper.</p>`],
   ['titre','Titre honorifique',`<p>Un texte sous ton nom, gagné par les trophées et les défis. « Tenant de la ceinture » n’est disponible que tant que tu la portes.</p>`],
   ['cadre','Cadre d’avatar',`<p>Un anneau, une couronne, des flammes, des étincelles… autour de tes initiales ou de ta photo. Les cadres des paliers de performance ont une forme dessinée (clous, lauriers, pointes, flammes…), animée aux deux derniers paliers.</p>`],
-  ['forme-carte','Forme de la carte',`<p>La découpe de ta carte entière : pointes (celle de base), écusson (Carte Or), bannière (Premier titre), octogone (3 mois d’affilée), coins biseautés (Fiche complète), ticket (Présent), arche (Première pesée). Le contour suit la forme, le contenu ne bouge pas.</p>`],
+  ['forme-carte','Forme de la carte',`<p>La découpe de ta carte entière : pointes (celle de base), écusson (Carte Or), bannière (Collectionneur, cinq titres), octogone (6 mois d’affilée), coins biseautés (-5 kg de gras), ticket (Triple tenant), arche (+5 kg de muscle). Toutes se méritent. Le contour suit la forme, le contenu ne bouge pas.</p>`],
   ['motif','Motif de fond',`<p>Une texture par-dessus la couleur du grade : carbone, marbre, rayures, holographique… Les épiques et légendaires sont animés.</p>`],
   ['theme','Thème de l’appli',`<p>Les couleurs de toute l’interface, sur ton téléphone. Les faciles sont volontairement un peu nuls (Gris béton, Rose bonbon, Mode gras) ; les beaux sont légendaires. « Doré » n’est disponible que tant que tu portes la ceinture.</p>`],
   ['etoiles','Étoiles',`<p>Une étoile sur la carte par mois avec la ceinture SPC, cinq maximum. Automatique, pas à équiper.</p>`],
